@@ -54,10 +54,22 @@ export async function POST(request) {
     const projectName = process.env.CLOUDFLARE_PROJECT_NAME;
     const apiToken = process.env.CLOUDFLARE_API_TOKEN;
 
+    // Debug: voir quelles variables sont disponibles
+    console.log('accountId:', accountId ? 'present' : 'MISSING');
+    console.log('projectName:', projectName ? 'present' : 'MISSING');
+    console.log('apiToken:', apiToken ? 'present' : 'MISSING');
+
     if (!accountId || !projectName || !apiToken) {
       console.error('Missing Cloudflare environment variables');
       return NextResponse.json(
-        { error: 'Configuration error' },
+        {
+          error: 'Configuration error',
+          debug: {
+            accountId: accountId ? 'present' : 'missing',
+            projectName: projectName ? 'present' : 'missing',
+            apiToken: apiToken ? 'present' : 'missing'
+          }
+        },
         { status: 500 }
       );
     }
