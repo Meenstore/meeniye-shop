@@ -46,7 +46,7 @@ export default async function HomePage() {
           {/* Carrousel de 3 images */}
           <HeroCarousel
             images={[
-              { src: 'https://cdn.shopify.com/s/files/1/0963/8435/2638/files/IMG_20251023_101325.jpg?v=1764545319', alt: 'Meeniyé - Soins capillaires naturels' },
+              { src: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/jack-atkinson-ca1Q3CQTbqo-unsplash-2.jpg?v=1764770989', alt: 'Meeniyé - Soins capillaires naturels' },
               { src: 'https://cdn.shopify.com/s/files/1/0963/8435/2638/files/IMG_20251031_152302.jpg?v=1764545306', alt: 'Cheveux crépus naturels' },
               
             ]}

@@ -92,7 +92,7 @@ export function CartProvider({ children }) {
       // Si le cart n'existe plus (expiré), en créer un nouveau et réessayer
       if (!response.ok) {
         const errorData = await response.json();
-        if (errorData.error?.includes('does not exist')) {
+        if (errorData.error?.includes('does not exist') || errorData.error?.includes('n\'existe pas')) {
           console.log('Cart expired, creating new cart...');
           localStorage.removeItem('shopify_cart');
           currentCart = await createCart();
@@ -158,7 +158,7 @@ export function CartProvider({ children }) {
       // Si le cart n'existe plus (expiré), vider le panier local
       if (!response.ok) {
         const errorData = await response.json();
-        if (errorData.error?.includes('does not exist')) {
+        if (errorData.error?.includes('does not exist') || errorData.error?.includes('n\'existe pas')) {
           console.log('Cart expired, clearing local cart...');
           localStorage.removeItem('shopify_cart');
           setCart(null);
@@ -197,7 +197,7 @@ export function CartProvider({ children }) {
       // Si le cart n'existe plus (expiré), vider le panier local
       if (!response.ok) {
         const errorData = await response.json();
-        if (errorData.error?.includes('does not exist')) {
+        if (errorData.error?.includes('does not exist') || errorData.error?.includes('n\'existe pas')) {
           console.log('Cart expired, clearing local cart...');
           localStorage.removeItem('shopify_cart');
           setCart(null);
