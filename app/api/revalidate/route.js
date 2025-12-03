@@ -1,7 +1,29 @@
-import crypto from 'crypto';
 import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
+
+/**
+ * Vérifier la signature HMAC avec Web Crypto API (compatible edge runtime)
+ */
+async function verifyShopifyWebhook(body, hmacHeader, secret) {
+  const encoder = new TextEncoder();
+  const keyData = encoder.encode(secret);
+  const messageData = encoder.encode(body);
+
+  const cryptoKey = await crypto.subtle.importKey(
+    'raw',
+    keyData,
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+
+  const signature = await crypto.subtle.sign('HMAC', cryptoKey, messageData);
+  const hashArray = Array.from(new Uint8Array(signature));
+  const hashBase64 = btoa(String.fromCharCode(...hashArray));
+
+  return hashBase64 === hmacHeader;
+}
 
 /**
  * API endpoint pour recevoir les webhooks Shopify
@@ -10,18 +32,15 @@ export const runtime = 'edge';
 export async function POST(request) {
   try {
     // 1. Vérifier la signature HMAC du webhook Shopify (sécurité)
-    const hmac = request.headers.get('x-shopify-hmac-sha256');
+    const hmacHeader = request.headers.get('x-shopify-hmac-sha256');
     const body = await request.text();
 
     const secret = process.env.SHOPIFY_WEBHOOK_SECRET;
 
-    if (secret && hmac) {
-      const hash = crypto
-        .createHmac('sha256', secret)
-        .update(body)
-        .digest('base64');
+    if (secret && hmacHeader) {
+      const isValid = await verifyShopifyWebhook(body, hmacHeader, secret);
 
-      if (hash !== hmac) {
+      if (!isValid) {
         console.error('Invalid HMAC signature');
         return NextResponse.json(
           { error: 'Invalid signature' },
