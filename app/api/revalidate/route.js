@@ -3,9 +3,25 @@ import { NextResponse } from 'next/server';
 export const runtime = 'edge';
 
 /**
- * Vérifier la signature HMAC avec Web Crypto API (compatible edge runtime)
+ * Comparaison sécurisée (Constant-Time) pour éviter les Timing Attacks
  */
-async function verifyShopifyWebhook(body, hmacHeader, secret) {
+function secureCompare(a, b) {
+  const aBuffer = new TextEncoder().encode(a);
+  const bBuffer = new TextEncoder().encode(b);
+  
+  if (aBuffer.byteLength !== bBuffer.byteLength) return false;
+
+  let result = 0;
+  for (let i = 0; i < aBuffer.byteLength; i++) {
+    result |= aBuffer[i] ^ bBuffer[i];
+  }
+  return result === 0;
+}
+
+/**
+ * Générer la signature HMAC
+ */
+async function generateSignature(body, secret) {
   const encoder = new TextEncoder();
   const keyData = encoder.encode(secret);
   const messageData = encoder.encode(body);
@@ -20,65 +36,53 @@ async function verifyShopifyWebhook(body, hmacHeader, secret) {
 
   const signature = await crypto.subtle.sign('HMAC', cryptoKey, messageData);
   const hashArray = Array.from(new Uint8Array(signature));
-  const hashBase64 = btoa(String.fromCharCode(...hashArray));
-
-  return hashBase64 === hmacHeader;
+  return btoa(String.fromCharCode(...hashArray));
 }
 
 /**
- * API endpoint pour recevoir les webhooks Shopify
- * et déclencher un redéploiement Cloudflare Pages
+ * API endpoint sécurisé
  */
 export async function POST(request) {
   try {
-    // 1. Vérifier la signature HMAC du webhook Shopify (sécurité)
     const hmacHeader = request.headers.get('x-shopify-hmac-sha256');
-    const body = await request.text();
-
     const secret = process.env.SHOPIFY_WEBHOOK_SECRET;
-
-    if (secret && hmacHeader) {
-      const isValid = await verifyShopifyWebhook(body, hmacHeader, secret);
-
-      if (!isValid) {
-        console.error('Invalid HMAC signature');
-        return NextResponse.json(
-          { error: 'Invalid signature' },
-          { status: 401 }
-        );
-      }
-    }
-
-    // 2. Déclencher un nouveau déploiement via Deploy Hook
     const deployHookUrl = process.env.CLOUDFLARE_DEPLOY_HOOK_URL;
 
-    if (!deployHookUrl) {
-      console.error('Missing CLOUDFLARE_DEPLOY_HOOK_URL');
-      return NextResponse.json(
-        { error: 'Configuration error' },
-        { status: 500 }
-      );
+    // 1. SÉCURITÉ : Si une info manque, on bloque TOUT DE SUITE.
+    if (!secret || !deployHookUrl) {
+      console.error('Server configuration error: Missing env vars');
+      return NextResponse.json({ error: 'Server config error' }, { status: 500 });
     }
 
-    // Appeler le Deploy Hook de Cloudflare Pages
+    if (!hmacHeader) {
+      return NextResponse.json({ error: 'Missing signature' }, { status: 401 });
+    }
+
+    // 2. Vérification de la signature
+    const body = await request.text();
+    const generatedSignature = await generateSignature(body, secret);
+
+    // Comparaison sécurisée (pas de === simple)
+    const isValid = secureCompare(generatedSignature, hmacHeader);
+
+    if (!isValid) {
+      console.error('Invalid HMAC signature - Attack attempt?');
+      return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
+    }
+
+    // --- À partir d'ici, c'est officiellement Shopify ---
+
+    // 3. Déclencher le déploiement Cloudflare
     const response = await fetch(deployHookUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}) // Parfois requis par Cloudflare
     });
 
     if (!response.ok) {
-      const error = await response.text();
-      console.error('Cloudflare API error:', error);
-      return NextResponse.json(
-        { error: 'Failed to trigger deployment' },
-        { status: 500 }
-      );
+      console.error('Cloudflare Deployment Failed');
+      return NextResponse.json({ error: 'Failed to trigger deployment' }, { status: 500 });
     }
-
-    const data = await response.json();
-    console.log('Deployment triggered:', data);
 
     return NextResponse.json({
       success: true,
@@ -87,9 +91,6 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Webhook error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
