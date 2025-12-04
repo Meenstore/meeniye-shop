@@ -49,30 +49,26 @@ export async function POST(request) {
       }
     }
 
-    // 2. Déclencher un nouveau déploiement Cloudflare Pages
-    const accountId = process.env.CLOUDFLARE_ACCOUNT_ID;
-    const projectName = process.env.CLOUDFLARE_PROJECT_NAME;
-    const apiToken = process.env.CLOUDFLARE_API_TOKEN;
+    // DEBUG: Testons TOUTES les variables
+    const allVars = {
+      CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
+      CLOUDFLARE_PROJECT_NAME: process.env.CLOUDFLARE_PROJECT_NAME,
+      CLOUDFLARE_API_TOKEN: process.env.CLOUDFLARE_API_TOKEN,
+      SHOPIFY_WEBHOOK_SECRET: process.env.SHOPIFY_WEBHOOK_SECRET,
+      NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,
+      NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN: process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN
+    };
 
-    // Debug: voir quelles variables sont disponibles
-    console.log('accountId:', accountId ? 'present' : 'MISSING');
-    console.log('projectName:', projectName ? 'present' : 'MISSING');
-    console.log('apiToken:', apiToken ? 'present' : 'MISSING');
-
-    if (!accountId || !projectName || !apiToken) {
-      console.error('Missing Cloudflare environment variables');
-      return NextResponse.json(
-        {
-          error: 'Configuration error',
-          debug: {
-            accountId: accountId ? 'present' : 'missing',
-            projectName: projectName ? 'present' : 'missing',
-            apiToken: apiToken ? 'present' : 'missing'
-          }
-        },
-        { status: 500 }
-      );
+    const varsStatus = {};
+    for (const [key, value] of Object.entries(allVars)) {
+      varsStatus[key] = value ? 'present' : 'missing';
     }
+
+    // Retourner le status de toutes les variables
+    return NextResponse.json({
+      message: 'Variables test',
+      variables: varsStatus
+    });
 
     // Appeler l'API Cloudflare pour créer un nouveau déploiement
     const response = await fetch(
