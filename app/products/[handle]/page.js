@@ -55,6 +55,10 @@ export async function generateStaticParams() {
   }
 }
 
+// Permettre la génération dynamique des pages pour les nouveaux produits
+// Si un produit n'était pas dans generateStaticParams, il sera rendu à la demande (SSR)
+export const dynamicParams = true;
+
 export default async function ProductPage({ params }) {
   const { handle } = await params;
   const product = await getProduct(handle);
