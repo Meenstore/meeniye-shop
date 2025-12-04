@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 /**
  * Vérifier la signature HMAC avec Web Crypto API (compatible edge runtime)
