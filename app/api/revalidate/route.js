@@ -49,34 +49,24 @@ export async function POST(request) {
       }
     }
 
-    // 2. Déclencher un nouveau déploiement Cloudflare Pages
-    const accountId = process.env.CF_ACC;
-    const projectName = process.env.CLOUDFLARE_PROJECT_NAME;
-    const apiToken = process.env.CF_TOKEN;
+    // 2. Déclencher un nouveau déploiement via Deploy Hook
+    const deployHookUrl = process.env.CLOUDFLARE_DEPLOY_HOOK_URL;
 
-    if (!accountId || !projectName || !apiToken) {
-      console.error('Missing Cloudflare environment variables');
+    if (!deployHookUrl) {
+      console.error('Missing CLOUDFLARE_DEPLOY_HOOK_URL');
       return NextResponse.json(
         { error: 'Configuration error' },
         { status: 500 }
       );
     }
 
-    // Appeler l'API Cloudflare pour créer un nouveau déploiement
-    const response = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${accountId}/pages/projects/${projectName}/deployments`,
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          // Déclencher un redéploiement de la branche production
-          production_branch: 'main',
-        }),
-      }
-    );
+    // Appeler le Deploy Hook de Cloudflare Pages
+    const response = await fetch(deployHookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     if (!response.ok) {
       const error = await response.text();
