@@ -49,24 +49,18 @@ export async function POST(request) {
       }
     }
 
-    // DEBUG: Test des nouvelles variables renommées
-    const allVars = {
-      CF_ACC: process.env.CF_ACC,
-      CF_TOKEN: process.env.CF_TOKEN,
-      CLOUDFLARE_PROJECT_NAME: process.env.CLOUDFLARE_PROJECT_NAME,
-      SHOPIFY_WEBHOOK_SECRET: process.env.SHOPIFY_WEBHOOK_SECRET
-    };
+    // 2. Déclencher un nouveau déploiement Cloudflare Pages
+    const accountId = process.env.CF_ACC;
+    const projectName = process.env.CLOUDFLARE_PROJECT_NAME;
+    const apiToken = process.env.CF_TOKEN;
 
-    const varsStatus = {};
-    for (const [key, value] of Object.entries(allVars)) {
-      varsStatus[key] = value ? 'present' : 'missing';
+    if (!accountId || !projectName || !apiToken) {
+      console.error('Missing Cloudflare environment variables');
+      return NextResponse.json(
+        { error: 'Configuration error' },
+        { status: 500 }
+      );
     }
-
-    // Retourner le status
-    return NextResponse.json({
-      message: 'Test with renamed variables',
-      variables: varsStatus
-    });
 
     // Appeler l'API Cloudflare pour créer un nouveau déploiement
     const response = await fetch(
