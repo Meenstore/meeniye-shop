@@ -49,14 +49,12 @@ export async function POST(request) {
       }
     }
 
-    // DEBUG: Testons TOUTES les variables
+    // DEBUG: Test des nouvelles variables renommées
     const allVars = {
-      CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
+      CF_ACC: process.env.CF_ACC,
+      CF_TOKEN: process.env.CF_TOKEN,
       CLOUDFLARE_PROJECT_NAME: process.env.CLOUDFLARE_PROJECT_NAME,
-      CLOUDFLARE_API_TOKEN: process.env.CLOUDFLARE_API_TOKEN,
-      SHOPIFY_WEBHOOK_SECRET: process.env.SHOPIFY_WEBHOOK_SECRET,
-      NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,
-      NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN: process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN
+      SHOPIFY_WEBHOOK_SECRET: process.env.SHOPIFY_WEBHOOK_SECRET
     };
 
     const varsStatus = {};
@@ -64,9 +62,9 @@ export async function POST(request) {
       varsStatus[key] = value ? 'present' : 'missing';
     }
 
-    // Retourner le status de toutes les variables
+    // Retourner le status
     return NextResponse.json({
-      message: 'Variables test',
+      message: 'Test with renamed variables',
       variables: varsStatus
     });
 
