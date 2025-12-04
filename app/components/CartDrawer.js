@@ -92,7 +92,7 @@ export default function CartDrawer() {
                       {merchandise.title !== 'Default Title' && (
                         <p className="text-[#2C3E2F]/40 text-xs mb-2">{merchandise.title}</p>
                       )}
-                      <p className="text-[#7A9B6E] font-semibold">
+                      <p className="text-[#077532] font-semibold">
                         {parseFloat(merchandise.priceV2.amount).toFixed(2)} {merchandise.priceV2.currencyCode}
                       </p>
 
@@ -145,7 +145,7 @@ export default function CartDrawer() {
             <button
               onClick={goToCheckout}
               disabled={isLoading}
-              className="w-full py-4 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed tracking-wide uppercase"
+              className="w-full py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed tracking-wide uppercase"
             >
               {isLoading ? 'Chargement...' : 'Procéder au paiement'}
             </button>

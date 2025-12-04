@@ -55,7 +55,7 @@ export default async function AllProductsPage() {
           {/* Fil d'ariane & Retour */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#077532] transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Retour à l&apos;accueil</span>
@@ -71,7 +71,7 @@ export default async function AllProductsPage() {
               </div>
 
               <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter mb-4">
-                Tous nos <span className="text-[#7A9B6E]">Produits</span>
+                Tous nos <span className="text-[#077532]">Produits</span>
               </h1>
 
               <p className="text-xl text-[#2C3E2F]/75 mb-6">
@@ -88,22 +88,22 @@ export default async function AllProductsPage() {
           <SmoothReveal direction="up" delay={0.2}>
             <div className="flex flex-wrap gap-3 justify-center mb-12">
               <Link href="/collections/hydratation-intense">
-                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#7A9B6E]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
+                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#077532]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
                   Hydratation Intense
                 </button>
               </Link>
               <Link href="/collections/gamme-revigorante">
-                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#7A9B6E]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
+                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#077532]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
                   Gamme Revigorante
                 </button>
               </Link>
               <Link href="/collections/serums-traitants">
-                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#7A9B6E]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
+                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#077532]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
                   Sérums Traitants
                 </button>
               </Link>
               <Link href="/collections/produits-unite">
-                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#7A9B6E]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
+                <button className="px-6 py-2 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#077532]/50 text-[#2C3E2F] text-sm font-medium tracking-wide rounded-full transition-all duration-300">
                   Produits à l&apos;unité
                 </button>
               </Link>
@@ -129,10 +129,10 @@ export default async function AllProductsPage() {
                       {product.tag && (
                         <div className="absolute top-4 right-4">
                           <span className={`px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded ${
-                            product.tag === 'New' ? 'bg-[#C4A088] text-[#2C3E2F]' :
-                            product.tag === 'Bestseller' ? 'bg-[#A0785A] text-[#FFFFFF]' :
-                            product.tag === 'Promo' ? 'bg-[#A0785A] text-[#FFFFFF]' :
-                            'bg-[#7A9B6E] text-[#FFFFFF]'
+                            product.tag === 'New' ? 'bg-[#582900] text-[#2C3E2F]' :
+                            product.tag === 'Bestseller' ? 'bg-[#582900] text-[#FFFFFF]' :
+                            product.tag === 'Promo' ? 'bg-[#582900] text-[#FFFFFF]' :
+                            'bg-[#01451c] text-[#FFFFFF]'
                           }`}>
                             {product.tag}
                           </span>
@@ -149,12 +149,12 @@ export default async function AllProductsPage() {
 
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-[#7A9B6E] font-medium tracking-wide uppercase">
+                        <span className="text-xs text-[#077532] font-medium tracking-wide uppercase">
                           {product.category}
                         </span>
                       </div>
 
-                      <h3 className="text-xl font-bold group-hover:text-[#7A9B6E] transition-colors duration-300 line-clamp-2">
+                      <h3 className="text-xl font-bold group-hover:text-[#077532] transition-colors duration-300 line-clamp-2">
                         {product.name}
                       </h3>
 
@@ -162,7 +162,7 @@ export default async function AllProductsPage() {
                         <span className="text-2xl font-bold">{product.price}€</span>
                         {(() => {
                           const Icon = getCategoryIcon(product.category);
-                          return <Icon className="w-6 h-6 text-[#7A9B6E]" />;
+                          return <Icon className="w-6 h-6 text-[#077532]" />;
                         })()}
                       </div>
                     </div>
@@ -180,7 +180,7 @@ export default async function AllProductsPage() {
                 </p>
                 <Link
                   href="/"
-                  className="inline-block px-8 py-4 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] font-medium tracking-wide uppercase transition-all duration-300"
+                  className="inline-block px-8 py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-medium tracking-wide uppercase transition-all duration-300"
                 >
                   Retour à l&apos;accueil
                 </Link>

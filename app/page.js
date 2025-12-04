@@ -34,31 +34,44 @@ export default async function HomePage() {
     p.tags && (p.tags.includes('bestseller') || p.tags.includes('Bestseller'))
   ).slice(0, 5);
 
+  // Filtrer les produits pour le hero carousel (tag "hero")
+  const heroProducts = products.filter(p =>
+    p.tags && (p.tags.includes('hero') || p.tags.includes('Hero'))
+  ).slice(0, 3);
+
+  // Créer les images du carousel depuis les produits hero
+  const heroImages = heroProducts.length > 0
+    ? heroProducts.map(product => ({
+        src: product.image,
+        alt: product.name
+      }))
+    : [
+        // Fallback si aucun produit avec tag "hero"
+        { src: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/jack-atkinson-ca1Q3CQTbqo-unsplash-2.jpg?v=1764770989', alt: 'Meeniyé - Soins capillaires naturels' },
+        { src: 'https://cdn.shopify.com/s/files/1/0963/8435/2638/files/IMG_20251031_152302.jpg?v=1764545306', alt: 'Cheveux crépus naturels' },
+      ];
+
   return (
     <>
-      <ScrollProgress color="#A0785A" height={3} />
+      <ScrollProgress color="#582900" height={3} />
       <Navbar />
 
       <main className="bg-[#FFFFFF] text-[#2C3E2F] font-[family-name:var(--font-playfair)]">
 
         {/* Hero Section avec carrousel */}
         <section className="relative min-h-[80vh] overflow-hidden mt-32">
-          {/* Carrousel de 3 images */}
+          {/* Carrousel de 3 images depuis Shopify (tag "hero") */}
           <HeroCarousel
-            images={[
-              { src: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/jack-atkinson-ca1Q3CQTbqo-unsplash-2.jpg?v=1764770989', alt: 'Meeniyé - Soins capillaires naturels' },
-              { src: 'https://cdn.shopify.com/s/files/1/0963/8435/2638/files/IMG_20251031_152302.jpg?v=1764545306', alt: 'Cheveux crépus naturels' },
-              
-            ]}
+            images={heroImages}
             height="80vh"
             zoomIntensity={1.15}
             autoplayDelay={5000}
           />
 
           {/* Animated gradient orbs */}
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#A0785A]/15 rounded-full blur-3xl animate-pulse pointer-events-none" />
-          <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#C4A088]/15 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-[#7A9B6E]/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#582900]/15 rounded-full blur-3xl animate-pulse pointer-events-none" />
+          <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#582900]/15 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-[#077532]/10 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '2s' }} />
         </section>
 
         {/* Texte principal */}
@@ -66,7 +79,7 @@ export default async function HomePage() {
           <div className="max-w-5xl mx-auto">
             <SmoothReveal direction="up">
               <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black tracking-tight leading-tight mb-12 text-center">
-                Révélez la beauté de vos <span className="text-[#7A9B6E]">cheveux crépus</span>
+                Révélez la beauté de vos <span className="text-[#077532]">cheveux crépus</span>
               </h1>
             </SmoothReveal>
 
@@ -86,7 +99,7 @@ export default async function HomePage() {
                   salons partenaires.
                 </p>
 
-                <p className="text-center text-2xl font-bold text-[#7A9B6E] pt-6">
+                <p className="text-center text-2xl font-bold text-[#077532] pt-6">
                   Offrez à vos cheveux l'alliance parfaite entre nature, science et savoir-faire expert.
                 </p>
               </div>
@@ -101,7 +114,7 @@ export default async function HomePage() {
               <div className="text-center mb-16">
                 <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight mb-6">
                   Une performance professionnelle, <br />
-                  <span className="text-[#7A9B6E]">pure et naturelle</span>
+                  <span className="text-[#077532]">pure et naturelle</span>
                 </h2>
                 <p className="text-xl text-[#2C3E2F]/80">
                   pour des cheveux visiblement plus sains
@@ -130,7 +143,7 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto">
             <SmoothReveal direction="up">
               <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight mb-16 text-center">
-                Nos <span className="text-[#A0785A]">Best-sellers</span>
+                Nos <span className="text-[#582900]">Best-sellers</span>
               </h2>
             </SmoothReveal>
 
@@ -148,7 +161,7 @@ export default async function HomePage() {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
                             <div className="absolute top-4 right-4">
-                              <span className="px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded bg-[#A0785A] text-[#FFFFFF]">
+                              <span className="px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded bg-[#582900] text-[#FFFFFF]">
                                 Best-seller
                               </span>
                             </div>
@@ -160,10 +173,10 @@ export default async function HomePage() {
                             />
                           </div>
 
-                          <h3 className="text-xl font-bold mb-2 group-hover:text-[#7A9B6E] transition-colors">
+                          <h3 className="text-xl font-bold mb-2 group-hover:text-[#077532] transition-colors">
                             {product.name}
                           </h3>
-                          <p className="text-2xl font-bold text-[#7A9B6E]">{product.price}€</p>
+                          <p className="text-2xl font-bold text-[#077532]">{product.price}€</p>
                         </div>
                       </Link>
                     </SmoothReveal>
@@ -183,7 +196,7 @@ export default async function HomePage() {
 
             <div className="text-center mt-12">
               <Link href="/products">
-                <button className="px-10 py-5 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
+                <button className="px-10 py-5 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
                   Voir tous les produits
                 </button>
               </Link>
@@ -196,7 +209,7 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto">
             <SmoothReveal direction="up">
               <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight mb-16 text-center">
-                Nos <span className="text-[#7A9B6E]">lignes de produits</span>
+                Nos <span className="text-[#077532]">lignes de produits</span>
               </h2>
             </SmoothReveal>
 
@@ -259,7 +272,7 @@ export default async function HomePage() {
           <div className="max-w-7xl mx-auto">
             <SmoothReveal direction="up">
               <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight mb-16 text-center">
-                Nos <span className="text-[#7A9B6E]">ingrédients phares</span>
+                Nos <span className="text-[#077532]">ingrédients phares</span>
               </h2>
             </SmoothReveal>
 
@@ -270,21 +283,21 @@ export default async function HomePage() {
                   subtitle: 'Hydratation profonde',
                   description: 'Riche en mucilages, le gombo apporte une hydratation intense, démêle naturellement et définit les boucles tout en laissant les cheveux doux, brillants et souples.',
                   image: 'https://images.unsplash.com/photo-1632014530325-3911c738b779?q=80&w=2046&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                  color: '#7A9B6E'
+                  color: '#077532'
                 },
                 {
                   name: 'Beurre de cacao',
                   subtitle: 'Nutrition & protection',
                   description: 'Ultra-nourrissant, le beurre de cacao scelle l\'hydratation, renforce la fibre capillaire et protège les cheveux crépus des agressions extérieures pour une chevelure plus forte et éclatante.',
                   image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=2574',
-                  color: '#A0785A'
+                  color: '#582900'
                 },
                 {
                   name: 'Protéine de riz',
                   subtitle: 'Force & volume',
                   description: 'Légère et fortifiante, la protéine de riz aide à réparer la fibre, redonne du corps et booste le volume, pour des cheveux plus résistants, souples et pleins de vitalité.',
                   image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=2574',
-                  color: '#C4A088'
+                  color: '#582900'
                 }
               ].map((ingredient, i) => (
                 <SmoothReveal key={i} direction="up" delay={i * 0.15}>
@@ -317,7 +330,7 @@ export default async function HomePage() {
         </section>
 
         {/* CTA vers Notre Histoire */}
-        <section className="py-20 px-6 md:px-12 bg-gradient-to-br from-[#7A9B6E]/10 to-[#A0785A]/10">
+        <section className="py-20 px-6 md:px-12 bg-gradient-to-br from-[#077532]/10 to-[#582900]/10">
           <div className="max-w-4xl mx-auto text-center">
             <SmoothReveal direction="up">
               <h2 className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold tracking-tight mb-6">
@@ -327,7 +340,7 @@ export default async function HomePage() {
                 Meeniyé, une marque née de la passion pour la beauté naturelle et ancrée dans les traditions afro-caribéennes
               </p>
               <Link href="/notre-histoire">
-                <button className="px-10 py-5 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
+                <button className="px-10 py-5 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
                   Notre histoire
                 </button>
               </Link>

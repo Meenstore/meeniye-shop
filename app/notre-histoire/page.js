@@ -28,7 +28,7 @@ export default function NotreHistoirePage() {
           <SmoothReveal direction="up">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors mb-8 group"
+              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#077532] transition-colors mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Retour à l&apos;accueil</span>
@@ -39,7 +39,7 @@ export default function NotreHistoirePage() {
           <SmoothReveal direction="up" delay={0.1}>
             <div className="mb-20 text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-[#2C3E2F]/10 rounded-full mb-6">
-                <Heart className="w-4 h-4 text-[#A0785A]" />
+                <Heart className="w-4 h-4 text-[#582900]" />
                 <span className="text-sm font-medium text-[#2C3E2F]/75 tracking-wide uppercase">
                   Notre Histoire
                 </span>
@@ -47,7 +47,7 @@ export default function NotreHistoirePage() {
 
               <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter mb-6">
                 Une Passion pour les <br />
-                <span className="text-[#7A9B6E]">Cheveux Naturels</span>
+                <span className="text-[#077532]">Cheveux Naturels</span>
               </h1>
             </div>
           </SmoothReveal>
@@ -80,7 +80,7 @@ export default function NotreHistoirePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/60 via-transparent to-transparent" />
 
                   {/* Badge décoratif */}
-                  <div className="absolute top-8 right-8 bg-[#A0785A]/90 backdrop-blur-sm px-6 py-3 rounded-full">
+                  <div className="absolute top-8 right-8 bg-[#582900]/90 backdrop-blur-sm px-6 py-3 rounded-full">
                     <span className="text-sm font-bold text-[#FFFFFF] uppercase tracking-wide">Fondatrice</span>
                   </div>
                 </div>
@@ -88,16 +88,16 @@ export default function NotreHistoirePage() {
 
               <SmoothReveal direction="right">
                 <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#A0785A]/10 border border-[#A0785A]/20 rounded-full mb-4">
-                    <Sparkles className="w-4 h-4 text-[#A0785A]" />
-                    <span className="text-sm font-medium text-[#A0785A] tracking-wide uppercase">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#582900]/10 border border-[#582900]/20 rounded-full mb-4">
+                    <Sparkles className="w-4 h-4 text-[#582900]" />
+                    <span className="text-sm font-medium text-[#582900] tracking-wide uppercase">
                       La Fondatrice
                     </span>
                   </div>
 
                   <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tighter leading-tight mb-8">
                     Anolia, <br />
-                    <span className="text-[#7A9B6E]">fondatrice de Meeniyé</span>
+                    <span className="text-[#077532]">fondatrice de Meeniyé</span>
                   </h2>
 
                   <div className="space-y-6 text-lg text-[#2C3E2F]/85 leading-relaxed">
@@ -147,7 +147,7 @@ export default function NotreHistoirePage() {
                       besoins spécifiques des cheveux crépus souvent méconnus.
                     </p>
 
-                    <p className="text-xl font-semibold text-[#7A9B6E] italic border-l-4 border-[#7A9B6E] pl-6">
+                    <p className="text-xl font-semibold text-[#077532] italic border-l-4 border-[#077532] pl-6">
                       Pour elle, le soin des cheveux crépus va bien au-delà de l&apos;esthétique : &quot;c&apos;est un chemin de développement
                       personnel, d&apos;acceptation de soi et d&apos;émancipation du regard des autres&quot;.
                     </p>
@@ -173,7 +173,7 @@ export default function NotreHistoirePage() {
             <SmoothReveal direction="up">
               <div className="text-center mb-16">
                 <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tighter mb-6">
-                  <span className="text-[#7A9B6E]">Meeniyé</span>, un nom. <br />Une histoire.
+                  <span className="text-[#077532]">Meeniyé</span>, un nom. <br />Une histoire.
                 </h2>
                 <p className="text-xl text-[#2C3E2F]/75 italic">
                   Les mots de la fondatrice…
@@ -197,7 +197,7 @@ export default function NotreHistoirePage() {
 
               <SmoothReveal direction="right">
                 <div className="space-y-6 text-lg text-[#2C3E2F]/85 leading-relaxed">
-                  <p className="text-2xl font-bold text-[#7A9B6E]">
+                  <p className="text-2xl font-bold text-[#077532]">
                     &quot;Le nom de ma marque, Meeniyé, est un hommage rendu à ma grand-mère Ameeniyé, femme guyanaise
                     issue du peuple marron Boni.
                   </p>
@@ -231,7 +231,7 @@ export default function NotreHistoirePage() {
                     continents.
                   </p>
 
-                  <p className="text-xl font-semibold text-[#A0785A] pt-4">
+                  <p className="text-xl font-semibold text-[#582900] pt-4">
                     Elle traduit aussi ce lien profond entre générations. On retrouve dans Meeniyé la complicité et la douceur
                     d&apos;une grand-mère et de sa petite-fille, liées par l&apos;amour, la transmission et la mémoire.&quot;
                   </p>
@@ -242,7 +242,7 @@ export default function NotreHistoirePage() {
 
           {/* CTA Section */}
           <SmoothReveal direction="up">
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#7A9B6E]/20 to-[#A0785A]/20 p-16">
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#077532]/20 to-[#582900]/20 p-16">
               <div className="relative text-center">
                 <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-tighter mb-6">
                   Découvrez notre gamme complète
@@ -251,7 +251,7 @@ export default function NotreHistoirePage() {
                   Des produits nés de la passion, de la tradition et d&apos;une expertise professionnelle au service de vos cheveux
                 </p>
                 <Link href="/products">
-                  <button className="px-10 py-5 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] text-sm font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
+                  <button className="px-10 py-5 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] text-sm font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
                     Voir nos produits
                   </button>
                 </Link>

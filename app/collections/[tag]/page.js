@@ -94,7 +94,7 @@ export default async function CollectionPage({ params }) {
           <SmoothReveal direction="up">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors mb-8 group"
+              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#077532] transition-colors mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Retour à l&apos;accueil</span>
@@ -104,9 +104,9 @@ export default async function CollectionPage({ params }) {
           {/* En-tête de collection */}
           <SmoothReveal direction="up" delay={0.1}>
             <div className="mb-16 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#7A9B6E]/10 border border-[#7A9B6E]/20 rounded-full mb-6">
-                <div className="h-2 w-2 bg-[#7A9B6E] rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-[#7A9B6E] tracking-wide uppercase">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#077532]/10 border border-[#077532]/20 rounded-full mb-6">
+                <div className="h-2 w-2 bg-[#01451c] rounded-full animate-pulse" />
+                <span className="text-sm font-medium text-[#077532] tracking-wide uppercase">
                   Collection
                 </span>
               </div>
@@ -146,10 +146,10 @@ export default async function CollectionPage({ params }) {
                       {product.displayTag && (
                         <div className="absolute top-4 right-4">
                           <span className={`px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded ${
-                            product.displayTag === 'New' ? 'bg-[#C4A088] text-[#2C3E2F]' :
-                            product.displayTag === 'Bestseller' ? 'bg-[#A0785A] text-[#FFFFFF]' :
-                            product.displayTag === 'Promo' ? 'bg-[#A0785A] text-[#FFFFFF]' :
-                            'bg-[#7A9B6E] text-[#FFFFFF]'
+                            product.displayTag === 'New' ? 'bg-[#582900] text-[#2C3E2F]' :
+                            product.displayTag === 'Bestseller' ? 'bg-[#582900] text-[#FFFFFF]' :
+                            product.displayTag === 'Promo' ? 'bg-[#582900] text-[#FFFFFF]' :
+                            'bg-[#01451c] text-[#FFFFFF]'
                           }`}>
                             {product.displayTag}
                           </span>
@@ -166,12 +166,12 @@ export default async function CollectionPage({ params }) {
 
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-[#7A9B6E] font-medium tracking-wide uppercase">
+                        <span className="text-xs text-[#077532] font-medium tracking-wide uppercase">
                           {getCategoryDisplayName(product.category)}
                         </span>
                       </div>
 
-                      <h3 className="text-xl font-bold group-hover:text-[#7A9B6E] transition-colors duration-300">
+                      <h3 className="text-xl font-bold group-hover:text-[#077532] transition-colors duration-300">
                         {product.name}
                       </h3>
 
@@ -179,7 +179,7 @@ export default async function CollectionPage({ params }) {
                         <span className="text-2xl font-bold">${product.price}</span>
                         {(() => {
                           const Icon = getCategoryIcon(product.category);
-                          return <Icon className="w-6 h-6 text-[#7A9B6E]" />;
+                          return <Icon className="w-6 h-6 text-[#077532]" />;
                         })()}
                       </div>
                     </div>
@@ -197,7 +197,7 @@ export default async function CollectionPage({ params }) {
                 </p>
                 <Link
                   href="/"
-                  className="inline-block px-8 py-4 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] font-medium tracking-wide uppercase transition-all duration-300"
+                  className="inline-block px-8 py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-medium tracking-wide uppercase transition-all duration-300"
                 >
                   Retour à l&apos;accueil
                 </Link>

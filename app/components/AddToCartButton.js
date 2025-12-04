@@ -38,8 +38,8 @@ export default function AddToCartButton({
   const baseClasses = "flex items-center justify-center gap-2 px-6 py-3 font-medium tracking-wide uppercase transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variantClasses = {
-    overlay: "absolute bottom-4 left-4 right-4 bg-[#F8F9FA] hover:bg-[#7A9B6E] text-[#2C3E2F] hover:text-[#FFFFFF] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0",
-    default: "w-full bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] text-base"
+    overlay: "absolute bottom-4 left-4 right-4 bg-[#F8F9FA] hover:bg-[#01451c] text-[#2C3E2F] hover:text-[#FFFFFF] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0",
+    default: "w-full bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] text-base"
   };
 
   return (

@@ -35,7 +35,7 @@ export default function Navbar() {
     <>
       <nav className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ${
         isScrollingUp
-          ? 'bg-white/95 backdrop-blur-xl border-b border-[#A0785A]/10 shadow-lg'
+          ? 'bg-white/95 backdrop-blur-xl border-b border-[#582900]/10 shadow-lg'
           : 'bg-transparent border-b border-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-6">
@@ -43,7 +43,7 @@ export default function Navbar() {
             {/* Menu Hamburger - Gauche */}
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="text-[#2C3E2F] hover:text-[#7A9B6E] transition-colors p-2"
+              className="text-[#2C3E2F] hover:text-[#077532] transition-colors p-2"
               aria-label="Menu"
             >
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,21 +66,21 @@ export default function Navbar() {
 
             {/* Icônes - Droite */}
             <div className="flex items-center gap-4">
-              <button className="text-[#2C3E2F] hover:text-[#7A9B6E] transition-colors p-2">
+              <button className="text-[#2C3E2F] hover:text-[#077532] transition-colors p-2">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </button>
               <button
                 onClick={openDrawer}
-                className="relative text-[#2C3E2F] hover:text-[#7A9B6E] transition-colors p-2"
+                className="relative text-[#2C3E2F] hover:text-[#077532] transition-colors p-2"
                 title="Ouvrir le panier"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-[#A0785A] text-[#FFFFFF] text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-[#582900] text-[#FFFFFF] text-xs font-bold rounded-full flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
@@ -92,13 +92,13 @@ export default function Navbar() {
 
       {/* Menu déroulant */}
       {showMobileMenu && (
-        <div className="fixed top-30 left-0 right-0 z-40 bg-white/98 backdrop-blur-xl border-b border-[#A0785A]/10 shadow-xl">
+        <div className="fixed top-30 left-0 right-0 z-40 bg-white/98 backdrop-blur-xl border-b border-[#582900]/10 shadow-xl">
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
             <div className="flex flex-col gap-6">
               <Link
                 href="/products"
                 onClick={() => setShowMobileMenu(false)}
-                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors tracking-wide"
+                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#077532] transition-colors tracking-wide"
               >
                 Nos produits
               </Link>
@@ -106,7 +106,7 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setShowCategoriesMenu(!showCategoriesMenu)}
-                  className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors tracking-wide flex items-center gap-2"
+                  className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#077532] transition-colors tracking-wide flex items-center gap-2"
                 >
                   Nos gammes complètes
                   <svg
@@ -124,28 +124,28 @@ export default function Navbar() {
                     <Link
                       href="/collections/hydratation-intense"
                       onClick={() => setShowMobileMenu(false)}
-                      className="text-base text-[#2C3E2F]/70 hover:text-[#7A9B6E] transition-colors"
+                      className="text-base text-[#2C3E2F]/70 hover:text-[#077532] transition-colors"
                     >
                       Hydratation Intense
                     </Link>
                     <Link
                       href="/collections/gamme-revigorante"
                       onClick={() => setShowMobileMenu(false)}
-                      className="text-base text-[#2C3E2F]/70 hover:text-[#7A9B6E] transition-colors"
+                      className="text-base text-[#2C3E2F]/70 hover:text-[#077532] transition-colors"
                     >
                       Gamme Revigorante
                     </Link>
                     <Link
                       href="/collections/serums-traitants"
                       onClick={() => setShowMobileMenu(false)}
-                      className="text-base text-[#2C3E2F]/70 hover:text-[#7A9B6E] transition-colors"
+                      className="text-base text-[#2C3E2F]/70 hover:text-[#077532] transition-colors"
                     >
                       Sérums Traitants
                     </Link>
                     <Link
                       href="/collections/produits-unite"
                       onClick={() => setShowMobileMenu(false)}
-                      className="text-base text-[#2C3E2F]/70 hover:text-[#7A9B6E] transition-colors"
+                      className="text-base text-[#2C3E2F]/70 hover:text-[#077532] transition-colors"
                     >
                       Produits à l&apos;unité
                     </Link>
@@ -156,7 +156,7 @@ export default function Navbar() {
               <Link
                 href="/notre-histoire"
                 onClick={() => setShowMobileMenu(false)}
-                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors tracking-wide"
+                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#077532] transition-colors tracking-wide"
               >
                 Notre histoire
               </Link>
@@ -164,7 +164,7 @@ export default function Navbar() {
               <Link
                 href="/espace-pro"
                 onClick={() => setShowMobileMenu(false)}
-                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors tracking-wide"
+                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#077532] transition-colors tracking-wide"
               >
                 Espace pro
               </Link>
@@ -172,7 +172,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setShowMobileMenu(false)}
-                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors tracking-wide"
+                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#077532] transition-colors tracking-wide"
               >
                 Contact
               </Link>

@@ -52,7 +52,7 @@ export default function ContactPage() {
           <SmoothReveal direction="up">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors mb-8 group"
+              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#077532] transition-colors mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Retour à l&apos;accueil</span>
@@ -63,7 +63,7 @@ export default function ContactPage() {
           <SmoothReveal direction="up" delay={0.1}>
             <div className="mb-20 text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-[#2C3E2F]/10 rounded-full mb-6">
-                <MessageCircle className="w-4 h-4 text-[#7A9B6E]" />
+                <MessageCircle className="w-4 h-4 text-[#077532]" />
                 <span className="text-sm font-medium text-[#2C3E2F]/75 tracking-wide uppercase">
                   Contact
                 </span>
@@ -71,7 +71,7 @@ export default function ContactPage() {
 
               <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter mb-6">
                 Contactez-<br />
-                <span className="text-[#7A9B6E]">nous</span>
+                <span className="text-[#077532]">nous</span>
               </h1>
 
               <p className="text-xl text-[#2C3E2F]/75 max-w-3xl mx-auto leading-relaxed">
@@ -90,35 +90,35 @@ export default function ContactPage() {
                   title: 'Email',
                   info: 'contact@votredomaine.com',
                   desc: 'Réponse sous 24-48h',
-                  color: '#A0785A'
+                  color: '#582900'
                 },
                 {
                   icon: Phone,
                   title: 'Téléphone',
                   info: '+33 X XX XX XX XX',
                   desc: 'Lun-Ven : 9h-18h',
-                  color: '#C4A088'
+                  color: '#582900'
                 },
                 {
                   icon: MapPin,
                   title: 'Adresse',
                   info: 'France métropolitaine',
                   desc: 'DOM-TOM & Suisse',
-                  color: '#7A9B6E'
+                  color: '#077532'
                 },
                 {
                   icon: Clock,
                   title: 'Horaires',
                   info: '9h00 - 18h00',
                   desc: 'Du lundi au vendredi',
-                  color: '#A0785A'
+                  color: '#582900'
                 }
               ].map((contact, i) => (
                 <SmoothReveal key={i} direction="up" delay={i * 0.1}>
-                  <div className="p-6 rounded-2xl bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#7A9B6E]/30 transition-all duration-500 group text-center h-full">
+                  <div className="p-6 rounded-2xl bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/30 transition-all duration-500 group text-center h-full">
                     <contact.icon className="w-10 h-10 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" style={{ color: contact.color }} />
                     <h3 className="font-bold mb-2 text-lg">{contact.title}</h3>
-                    <p className="text-[#7A9B6E] font-medium mb-1">{contact.info}</p>
+                    <p className="text-[#077532] font-medium mb-1">{contact.info}</p>
                     <p className="text-sm text-[#2C3E2F]/70">{contact.desc}</p>
                   </div>
                 </SmoothReveal>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                   <div className="p-8 rounded-3xl bg-[#F8F9FA] border border-[#2C3E2F]/10">
                     {submitted ? (
                       <div className="text-center py-12">
-                        <CheckCircle2 className="w-16 h-16 text-[#7A9B6E] mx-auto mb-6" />
+                        <CheckCircle2 className="w-16 h-16 text-[#077532] mx-auto mb-6" />
                         <h3 className="text-2xl font-bold mb-4">Message envoyé !</h3>
                         <p className="text-[#2C3E2F]/75">
                           Merci pour votre message. Nous vous répondrons très bientôt.
@@ -153,7 +153,7 @@ export default function ContactPage() {
                       <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
                           <label className="block text-sm font-medium mb-2">
-                            Nom complet <span className="text-[#7A9B6E]">*</span>
+                            Nom complet <span className="text-[#077532]">*</span>
                           </label>
                           <input
                             type="text"
@@ -161,14 +161,14 @@ export default function ContactPage() {
                             value={formData.nom}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#7A9B6E] transition-colors"
+                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#077532] transition-colors"
                             placeholder="Votre nom"
                           />
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium mb-2">
-                            Email <span className="text-[#7A9B6E]">*</span>
+                            Email <span className="text-[#077532]">*</span>
                           </label>
                           <input
                             type="email"
@@ -176,21 +176,21 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#7A9B6E] transition-colors"
+                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#077532] transition-colors"
                             placeholder="votre@email.com"
                           />
                         </div>
 
                         <div>
                           <label className="block text-sm font-medium mb-2">
-                            Sujet <span className="text-[#7A9B6E]">*</span>
+                            Sujet <span className="text-[#077532]">*</span>
                           </label>
                           <select
                             name="sujet"
                             value={formData.sujet}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#7A9B6E] transition-colors"
+                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#077532] transition-colors"
                           >
                             <option value="">Sélectionnez un sujet</option>
                             <option value="produit">Question sur un produit</option>
@@ -203,7 +203,7 @@ export default function ContactPage() {
 
                         <div>
                           <label className="block text-sm font-medium mb-2">
-                            Message <span className="text-[#7A9B6E]">*</span>
+                            Message <span className="text-[#077532]">*</span>
                           </label>
                           <textarea
                             name="message"
@@ -211,14 +211,14 @@ export default function ContactPage() {
                             onChange={handleChange}
                             required
                             rows={6}
-                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#7A9B6E] transition-colors resize-none"
+                            className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#2C3E2F]/10 rounded-lg focus:outline-none focus:border-[#077532] transition-colors resize-none"
                             placeholder="Écrivez votre message ici..."
                           />
                         </div>
 
                         <button
                           type="submit"
-                          className="w-full px-8 py-4 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
+                          className="w-full px-8 py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
                         >
                           <Send className="w-5 h-5" />
                           Envoyer le message
@@ -267,7 +267,7 @@ export default function ContactPage() {
                     ].map((faq, i) => (
                       <div
                         key={i}
-                        className="p-6 rounded-2xl bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#7A9B6E]/20 transition-all duration-300"
+                        className="p-6 rounded-2xl bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/20 transition-all duration-300"
                       >
                         <h4 className="font-bold mb-2 text-[#2C3E2F]">{faq.question}</h4>
                         <p className="text-[#2C3E2F]/75 text-sm leading-relaxed">{faq.answer}</p>
@@ -276,13 +276,13 @@ export default function ContactPage() {
                   </div>
 
                   {/* Espace Pro CTA */}
-                  <div className="p-8 rounded-2xl bg-gradient-to-br from-[#7A9B6E]/10 to-[#2C3E2F]/10 border border-[#7A9B6E]/20">
+                  <div className="p-8 rounded-2xl bg-gradient-to-br from-[#077532]/10 to-[#2C3E2F]/10 border border-[#077532]/20">
                     <h3 className="text-xl font-bold mb-3">Vous êtes professionnel ?</h3>
                     <p className="text-[#2C3E2F]/75 mb-6">
                       Découvrez nos conditions spéciales et formats professionnels.
                     </p>
                     <Link href="/espace-pro">
-                      <button className="px-6 py-3 bg-[#7A9B6E] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg text-sm">
+                      <button className="px-6 py-3 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg text-sm">
                         Accéder à l&apos;espace pro
                       </button>
                     </Link>

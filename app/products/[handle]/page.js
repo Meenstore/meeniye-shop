@@ -72,7 +72,7 @@ export default async function ProductPage({ params }) {
 
   return (
     <>
-      <ScrollProgress color="#A0785A" height={3} />
+      <ScrollProgress color="#582900" height={3} />
       <Navbar />
 
       <main className="bg-[#FFFFFF] text-[#2C3E2F] font-[family-name:var(--font-playfair)] min-h-screen">
@@ -80,7 +80,7 @@ export default async function ProductPage({ params }) {
           {/* Retour à l'accueil */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#7A9B6E] transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#077532] transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Retour à l&apos;accueil</span>
@@ -128,11 +128,11 @@ export default async function ProductPage({ params }) {
               <div>
                 <SmoothReveal direction="right">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-sm text-[#7A9B6E] font-medium tracking-wide uppercase">
+                    <span className="text-sm text-[#077532] font-medium tracking-wide uppercase">
                       {getCategoryDisplayName(product.category)}
                     </span>
                     {product.tags.some(tag => tag.toLowerCase() === 'new') && (
-                      <span className="px-3 py-1 text-xs font-bold tracking-wide uppercase rounded bg-[#C4A088] text-[#2C3E2F]">
+                      <span className="px-3 py-1 text-xs font-bold tracking-wide uppercase rounded bg-[#582900] text-[#2C3E2F]">
                         Nouveau
                       </span>
                     )}
@@ -147,7 +147,7 @@ export default async function ProductPage({ params }) {
 
                 <SmoothReveal direction="right" delay={0.2}>
                   <div className="flex items-baseline gap-4 mb-8">
-                    <span className="text-4xl font-bold text-[#7A9B6E]">
+                    <span className="text-4xl font-bold text-[#077532]">
                       {product.currency} ${product.price.toFixed(2)}
                     </span>
                   </div>
@@ -176,9 +176,9 @@ export default async function ProductPage({ params }) {
                           disabled={!variant.availableForSale}
                           className={`px-4 py-2 rounded-lg border transition-all duration-300 ${
                             variant.availableForSale
-                              ? 'border-[#2C3E2F]/20 hover:border-[#7A9B6E] hover:bg-[#7A9B6E]/10'
+                              ? 'border-[#2C3E2F]/20 hover:border-[#077532] hover:bg-[#077532]/10'
                               : 'border-[#2C3E2F]/10 text-[#2C3E2F]/70 cursor-not-allowed opacity-50'
-                          } ${i === 0 && variant.availableForSale ? 'border-[#7A9B6E] bg-[#7A9B6E]/10' : ''}`}
+                          } ${i === 0 && variant.availableForSale ? 'border-[#077532] bg-[#077532]/10' : ''}`}
                         >
                           <span className="block text-sm font-medium">{variant.title}</span>
                           {variant.title !== 'Default Title' && (
@@ -203,16 +203,16 @@ export default async function ProductPage({ params }) {
                   />
 
                   <div className="grid grid-cols-3 gap-4 text-center">
-                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#7A9B6E]/30 transition-colors">
-                      <Truck className="w-8 h-8 mx-auto mb-2 text-[#A0785A]" />
+                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/30 transition-colors">
+                      <Truck className="w-8 h-8 mx-auto mb-2 text-[#582900]" />
                       <div className="text-xs text-[#2C3E2F]/70">Livraison gratuite</div>
                     </div>
-                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#7A9B6E]/30 transition-colors">
-                      <RotateCcw className="w-8 h-8 mx-auto mb-2 text-[#7A9B6E]" />
+                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/30 transition-colors">
+                      <RotateCcw className="w-8 h-8 mx-auto mb-2 text-[#077532]" />
                       <div className="text-xs text-[#2C3E2F]/70">Retour 30 jours</div>
                     </div>
-                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#7A9B6E]/30 transition-colors">
-                      <Lock className="w-8 h-8 mx-auto mb-2 text-[#C4A088]" />
+                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/30 transition-colors">
+                      <Lock className="w-8 h-8 mx-auto mb-2 text-[#582900]" />
                       <div className="text-xs text-[#2C3E2F]/70">Paiement sécurisé</div>
                     </div>
                   </div>
@@ -255,7 +255,7 @@ export default async function ProductPage({ params }) {
             <div className="mt-16 text-center">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#7A9B6E]/50 text-[#2C3E2F] text-sm font-medium tracking-wide uppercase transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-[#2C3E2F]/10 hover:border-[#077532]/50 text-[#2C3E2F] text-sm font-medium tracking-wide uppercase transition-all duration-300"
               >
                 <ArrowLeft className="w-5 h-5" />
                 Retour à la boutique
