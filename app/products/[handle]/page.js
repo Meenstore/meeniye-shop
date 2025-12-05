@@ -6,6 +6,7 @@ import Navbar from '@/app/components/Navbar';
 import AddToCartButton from '@/app/components/AddToCartButton';
 import Link from 'next/link';
 import { Truck, RotateCcw, Lock, ArrowLeft } from 'lucide-react';
+import DOMPurify from 'isomorphic-dompurify';
 
 // Mapper les catégories Shopify (en anglais) vers les noms français
 const getCategoryDisplayName = (category) => {
@@ -159,7 +160,12 @@ export default async function ProductPage({ params }) {
                   <h2 className="text-xl font-bold mb-4">Description</h2>
                   <div
                     className="text-[#2C3E2F]/80 leading-relaxed space-y-4"
-                    dangerouslySetInnerHTML={{ __html: product.descriptionHtml || product.description }}
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(product.descriptionHtml || product.description, {
+                        ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'b', 'i', 'u', 'ul', 'ol', 'li', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'code'],
+                        ALLOWED_ATTR: ['href', 'target', 'rel', 'class']
+                      })
+                    }}
                   />
                 </div>
               </SmoothReveal>

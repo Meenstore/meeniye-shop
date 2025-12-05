@@ -15,23 +15,49 @@ export default function ContactPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Ici vous pourrez ajouter l'intégration avec votre backend ou service email
-    console.log('Formulaire contact soumis:', formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
 
-    // Réinitialiser après 5 secondes
-    setTimeout(() => {
-      setSubmitted(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Erreur lors de l\'envoi du message');
+      }
+
+      // Succès
+      setSubmitted(true);
       setFormData({
         nom: '',
         email: '',
         sujet: '',
         message: ''
       });
-    }, 5000);
+
+      // Réinitialiser après 5 secondes
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+
+    } catch (err) {
+      console.error('Erreur:', err);
+      setError(err.message || 'Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -150,7 +176,13 @@ export default function ContactPage() {
                         </p>
                       </div>
                     ) : (
-                      <form onSubmit={handleSubmit} className="space-y-6">
+                      <>
+                        {error && (
+                          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                            {error}
+                          </div>
+                        )}
+                        <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
                           <label className="block text-sm font-medium mb-2">
                             Nom complet <span className="text-[#077532]">*</span>
@@ -218,10 +250,11 @@ export default function ContactPage() {
 
                         <button
                           type="submit"
-                          className="w-full px-8 py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg flex items-center justify-center gap-2"
+                          disabled={isSubmitting}
+                          className="w-full px-8 py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <Send className="w-5 h-5" />
-                          Envoyer le message
+                          {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
                         </button>
 
                         <p className="text-xs text-[#2C3E2F]/70 text-center">
@@ -229,6 +262,7 @@ export default function ContactPage() {
                           pour répondre à votre demande.
                         </p>
                       </form>
+                      </>
                     )}
                   </div>
                 </div>

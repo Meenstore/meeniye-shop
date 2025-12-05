@@ -95,14 +95,6 @@ export default function Navbar() {
         <div className="fixed top-30 left-0 right-0 z-40 bg-white/98 backdrop-blur-xl border-b border-[#582900]/10 shadow-xl">
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
             <div className="flex flex-col gap-6">
-              <Link
-                href="/products"
-                onClick={() => setShowMobileMenu(false)}
-                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#077532] transition-colors tracking-wide"
-              >
-                Nos produits
-              </Link>
-
               <div className="relative">
                 <button
                   onClick={() => setShowCategoriesMenu(!showCategoriesMenu)}
@@ -152,6 +144,14 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
+
+              <Link
+                href="/products"
+                onClick={() => setShowMobileMenu(false)}
+                className="text-lg font-semibold text-[#2C3E2F]/75 hover:text-[#077532] transition-colors tracking-wide"
+              >
+                Tous nos produits
+              </Link>
 
               <Link
                 href="/notre-histoire"

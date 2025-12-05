@@ -19,16 +19,31 @@ export default function EspaceProPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Ici vous pourrez ajouter l'intégration avec votre backend ou service email
-    console.log('Formulaire soumis:', formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
 
-    // Réinitialiser après 5 secondes
-    setTimeout(() => {
-      setSubmitted(false);
+    try {
+      const response = await fetch('/api/espace-pro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Erreur lors de l\'envoi du message');
+      }
+
+      // Succès
+      setSubmitted(true);
       setFormData({
         nom: '',
         prenom: '',
@@ -38,7 +53,18 @@ export default function EspaceProPage() {
         typeProfessionnel: '',
         message: ''
       });
-    }, 5000);
+
+      // Réinitialiser après 5 secondes
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+
+    } catch (err) {
+      console.error('Erreur:', err);
+      setError(err.message || 'Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -217,7 +243,13 @@ export default function EspaceProPage() {
                       </p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <>
+                      {error && (
+                        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                          {error}
+                        </div>
+                      )}
+                      <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-sm font-medium mb-2">
@@ -332,9 +364,10 @@ export default function EspaceProPage() {
 
                       <button
                         type="submit"
-                        className="w-full px-8 py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg"
+                        disabled={isSubmitting}
+                        className="w-full px-8 py-4 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] font-bold tracking-wide uppercase transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        Envoyer ma demande
+                        {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
                       </button>
 
                       <p className="text-xs text-[#2C3E2F]/70 text-center">
@@ -342,6 +375,7 @@ export default function EspaceProPage() {
                         pour répondre à votre demande.
                       </p>
                     </form>
+                    </>
                   )}
                 </div>
               </SmoothReveal>

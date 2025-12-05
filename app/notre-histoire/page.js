@@ -1,9 +1,8 @@
 import Navbar from '@/app/components/Navbar';
 import SmoothReveal from '@/app/components/SmoothReveal';
-import ImageParallaxZoom from '@/app/components/ImageParallaxZoom';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Heart, Sparkles } from 'lucide-react';
+import { ArrowLeft, Sparkles } from 'lucide-react';
 
 export const metadata = {
   title: 'Notre Histoire - Meeniyé | Cosmétiques Capillaires Naturels',
@@ -24,64 +23,59 @@ export default function NotreHistoirePage() {
       <main className="bg-[#FFFFFF] text-[#2C3E2F] font-[family-name:var(--font-playfair)] min-h-screen pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-          {/* Fil d\'ariane & Retour */}
+          {/* Fil d'ariane & Retour */}
           <SmoothReveal direction="up">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#077532] transition-colors mb-8 group"
+              className="inline-flex items-center gap-2 text-[#2C3E2F]/75 hover:text-[#077532] transition-colors mb-12 group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>Retour à l&apos;accueil</span>
             </Link>
           </SmoothReveal>
 
-          {/* En-tête */}
-          <SmoothReveal direction="up" delay={0.1}>
-            <div className="mb-20 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-[#2C3E2F]/10 rounded-full mb-6">
-                <Heart className="w-4 h-4 text-[#582900]" />
-                <span className="text-sm font-medium text-[#2C3E2F]/75 tracking-wide uppercase">
-                  Notre Histoire
-                </span>
-              </div>
-
-              <h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter mb-6">
-                Une Passion pour les <br />
-                <span className="text-[#077532]">Cheveux Naturels</span>
-              </h1>
-            </div>
-          </SmoothReveal>
-
-          {/* Hero Image */}
-          <SmoothReveal direction="up" delay={0.2}>
-            <div className="relative h-[60vh] rounded-3xl overflow-hidden mb-20">
-              <ImageParallaxZoom
-                src="https://images.unsplash.com/photo-1763048208932-cbe149724374?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Histoire Meeniyé"
-                height="100%"
-                zoomIntensity={1.15}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E2F]/50 to-transparent" />
-            </div>
-          </SmoothReveal>
-
           {/* Section Fondatrice - Anolia */}
           <section className="mb-32">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <SmoothReveal direction="left">
-                <div className="relative h-[700px] rounded-3xl overflow-hidden sticky top-24">
-                  <Image
-                    src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=2574"
-                    alt="Anolia, fondatrice de Meeniyé"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/60 via-transparent to-transparent" />
+                <div className="space-y-12">
+                  {/* Photo 1 - Anolia */}
+                  <div className="relative h-[500px] rounded-3xl overflow-hidden">
+                    <Image
+                      src="https://cdn.shopify.com/s/files/1/0995/3204/6676/files/Anolia_siteinternet_8ef1b3f1-7feb-4d7c-8ed7-ff3c443bb3bb.jpg?v=1764883812"
+                      alt="Anolia, fondatrice de Meeniyé"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/60 via-transparent to-transparent" />
 
-                  {/* Badge décoratif */}
-                  <div className="absolute top-8 right-8 bg-[#582900]/90 backdrop-blur-sm px-6 py-3 rounded-full">
-                    <span className="text-sm font-bold text-[#FFFFFF] uppercase tracking-wide">Fondatrice</span>
+                    {/* Badge décoratif */}
+                    <div className="absolute top-8 right-8 bg-[#582900]/90 backdrop-blur-sm px-6 py-3 rounded-full">
+                      <span className="text-sm font-bold text-[#FFFFFF] uppercase tracking-wide">Fondatrice</span>
+                    </div>
+                  </div>
+
+                  {/* Photo 2 */}
+                  <div className="relative h-[400px] rounded-2xl overflow-hidden">
+                    <Image
+                      src="https://images.unsplash.com/photo-1725398262551-ee160c130a49?q=80&w=985&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Cheveux naturels - Meeniyé"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+
+                  {/* Photo 3 */}
+                  <div className="relative h-[400px] rounded-2xl overflow-hidden">
+                    <Image
+                      src="https://plus.unsplash.com/premium_photo-1730078556990-25234fc2e698?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="Soins capillaires naturels - Meeniyé"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
                   </div>
                 </div>
               </SmoothReveal>
@@ -91,19 +85,14 @@ export default function NotreHistoirePage() {
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#582900]/10 border border-[#582900]/20 rounded-full mb-4">
                     <Sparkles className="w-4 h-4 text-[#582900]" />
                     <span className="text-sm font-medium text-[#582900] tracking-wide uppercase">
-                      La Fondatrice
+                      Notre Histoire
                     </span>
                   </div>
 
-                  <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tighter leading-tight mb-8">
-                    Anolia, <br />
-                    <span className="text-[#077532]">fondatrice de Meeniyé</span>
-                  </h2>
-
                   <div className="space-y-6 text-lg text-[#2C3E2F]/85 leading-relaxed">
                     <p>
-                      Originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux,
-                      la fondatrice puise dans ses racines une inspiration profonde. Cette inspiration est nourrie notamment
+                      <strong className="text-[#077532] text-2xl">Anolia, fondatrice de Meeniyé,</strong> est originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux.
+                      Elle puise dans ses racines une inspiration profonde, nourrie notamment
                       par la richesse de la pharmacopée afro-caraïbéenne, qui met en lumière des plantes, huiles et ingrédients
                       naturels utilisés depuis des générations pour sublimer et protéger la beauté naturelle. Ce lien avec ces
                       traditions ancestrales est au cœur de sa vision et guide la création de produits authentiques et respectueux
@@ -162,79 +151,50 @@ export default function NotreHistoirePage() {
                       et l&apos;écoute au cœur de sa démarche. Sa marque invite à une (re)découverte de soi, une connexion à ses racines,
                       à son histoire, à sa force affirmant que chaque texture, chaque boucle raconte une histoire à valoriser.
                     </p>
+
+                    <h3 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tighter leading-tight mt-12 mb-6">
+                      <span className="text-[#077532]">Meeniyé</span>, un nom. Une histoire.
+                    </h3>
+
+                    <p className="text-2xl font-bold text-[#077532]">
+                      &quot;Le nom de ma marque, Meeniyé, est un hommage rendu à ma grand-mère Ameeniyé, femme guyanaise
+                      issue du peuple marron Boni.
+                    </p>
+
+                    <p>
+                      Ce prénom, chargé d&apos;histoire et de sens, est une porte ouverte sur mes racines profondes, une reconnexion
+                      intime avec une culture forgée par la résistance, la liberté et la créativité.
+                    </p>
+
+                    <p>
+                      Les marrons Boni ont bravé l&apos;oppression du système esclavagiste pour fonder des sociétés libres le long du
+                      fleuve Maroni, dans cet écrin luxuriant où la forêt amazonienne donne vie à la mémoire des Ancêtres. Ce
+                      peuple de guerriers est connu pour sa grande résilience et son histoire de liberté.
+                    </p>
+
+                    <p>
+                      Après leur auto libération, les Boni ont élaboré une culture, une langue et des savoirs nouveaux. Ils
+                      symbolisent la force, la résistance et la paix retrouvée.
+                    </p>
+
+                    <p>
+                      Ma grand-mère, dont le prénom a inspiré le nom de la marque, incarne ces valeurs essentielles à travers
+                      son parcours de vie, marqué par la ténacité, l&apos;amour et la sagesse.
+                    </p>
+
+                    <p>
+                      Au-delà de cette symbolique forte, la marque s&apos;appuie sur une philosophie ancestrale du soin, inspirée de
+                      la pharmacopée afro-caraïbéenne. Meeniyé est ainsi une véritable célébration de la beauté noire, enracinée
+                      dans la nature et la culture, puisant sa force dans un héritage historique et familial. C&apos;est une marque
+                      qui invite à la reconnexion avec soi-même, avec ses racines, avec la richesse d&apos;un peuple et de plusieurs
+                      continents.
+                    </p>
+
+                    <p className="text-xl font-semibold text-[#582900]">
+                      Elle traduit aussi ce lien profond entre générations. On retrouve dans Meeniyé la complicité et la douceur
+                      d&apos;une grand-mère et de sa petite-fille, liées par l&apos;amour, la transmission et la mémoire.&quot;
+                    </p>
                   </div>
-                </div>
-              </SmoothReveal>
-            </div>
-          </section>
-
-          {/* Section Nom Meeniyé */}
-          <section className="mb-32">
-            <SmoothReveal direction="up">
-              <div className="text-center mb-16">
-                <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tighter mb-6">
-                  <span className="text-[#077532]">Meeniyé</span>, un nom. <br />Une histoire.
-                </h2>
-                <p className="text-xl text-[#2C3E2F]/75 italic">
-                  Les mots de la fondatrice…
-                </p>
-              </div>
-            </SmoothReveal>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <SmoothReveal direction="left">
-                <div className="relative h-[600px] rounded-3xl overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=2574"
-                    alt="Traditions afro-caribéennes"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/60 via-transparent to-transparent" />
-                </div>
-              </SmoothReveal>
-
-              <SmoothReveal direction="right">
-                <div className="space-y-6 text-lg text-[#2C3E2F]/85 leading-relaxed">
-                  <p className="text-2xl font-bold text-[#077532]">
-                    &quot;Le nom de ma marque, Meeniyé, est un hommage rendu à ma grand-mère Ameeniyé, femme guyanaise
-                    issue du peuple marron Boni.
-                  </p>
-
-                  <p>
-                    Ce prénom, chargé d&apos;histoire et de sens, est une porte ouverte sur mes racines profondes, une reconnexion
-                    intime avec une culture forgée par la résistance, la liberté et la créativité.
-                  </p>
-
-                  <p>
-                    Les marrons Boni ont bravé l&apos;oppression du système esclavagiste pour fonder des sociétés libres le long du
-                    fleuve Maroni, dans cet écrin luxuriant où la forêt amazonienne donne vie à la mémoire des Ancêtres. Ce
-                    peuple de guerriers est connu pour sa grande résilience et son histoire de liberté.
-                  </p>
-
-                  <p>
-                    Après leur auto libération, les Boni ont élaboré une culture, une langue et des savoirs nouveaux. Ils
-                    symbolisent la force, la résistance et la paix retrouvée.
-                  </p>
-
-                  <p>
-                    Ma grand-mère, dont le prénom a inspiré le nom de la marque, incarne ces valeurs essentielles à travers
-                    son parcours de vie, marqué par la ténacité, l&apos;amour et la sagesse.
-                  </p>
-
-                  <p>
-                    Au-delà de cette symbolique forte, la marque s&apos;appuie sur une philosophie ancestrale du soin, inspirée de
-                    la pharmacopée afro-caraïbéenne. Meeniyé est ainsi une véritable célébration de la beauté noire, enracinée
-                    dans la nature et la culture, puisant sa force dans un héritage historique et familial. C&apos;est une marque
-                    qui invite à la reconnexion avec soi-même, avec ses racines, avec la richesse d&apos;un peuple et de plusieurs
-                    continents.
-                  </p>
-
-                  <p className="text-xl font-semibold text-[#582900] pt-4">
-                    Elle traduit aussi ce lien profond entre générations. On retrouve dans Meeniyé la complicité et la douceur
-                    d&apos;une grand-mère et de sa petite-fille, liées par l&apos;amour, la transmission et la mémoire.&quot;
-                  </p>
                 </div>
               </SmoothReveal>
             </div>
@@ -248,13 +208,20 @@ export default function NotreHistoirePage() {
                   Découvrez notre gamme complète
                 </h2>
                 <p className="text-xl text-[#2C3E2F]/75 mb-10 max-w-2xl mx-auto">
-                  Des produits nés de la passion, de la tradition et d&apos;une expertise professionnelle au service de vos cheveux
+                  Des soins professionnels inspirés de la pharmacopée afro-caribéenne
                 </p>
-                <Link href="/products">
-                  <button className="px-10 py-5 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] text-sm font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
-                    Voir nos produits
-                  </button>
-                </Link>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <Link href="/products">
+                    <button className="px-10 py-5 bg-[#01451c] hover:bg-[#2C3E2F] text-[#FFFFFF] text-sm font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
+                      Découvrir nos produits
+                    </button>
+                  </Link>
+                  <Link href="/contact">
+                    <button className="px-10 py-5 bg-white hover:bg-[#F8F9FA] text-[#2C3E2F] border border-[#2C3E2F]/20 text-sm font-bold tracking-wide uppercase transition-all duration-300 rounded-full">
+                      Nous contacter
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </SmoothReveal>

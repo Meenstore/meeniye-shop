@@ -47,8 +47,8 @@ export default async function HomePage() {
       }))
     : [
         // Fallback si aucun produit avec tag "hero"
-        { src: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/jack-atkinson-ca1Q3CQTbqo-unsplash-2.jpg?v=1764770989', alt: 'Meeniyé - Soins capillaires naturels' },
-        { src: 'https://cdn.shopify.com/s/files/1/0963/8435/2638/files/IMG_20251031_152302.jpg?v=1764545306', alt: 'Cheveux crépus naturels' },
+        { src: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/gel_gombo_menthe_poivree-copie.jpg?v=1764883091', alt: 'Meeniyé - Soins capillaires naturels' },
+        { src: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/baume_adoucissant_menthe_poivree-copie.jpg?v=1764882885', alt: 'Cheveux crépus naturels' },
       ];
 
   return (
@@ -64,7 +64,7 @@ export default async function HomePage() {
           <HeroCarousel
             images={heroImages}
             height="80vh"
-            zoomIntensity={1.15}
+            zoomIntensity={1.55}
             autoplayDelay={5000}
           />
 
@@ -126,7 +126,7 @@ export default async function HomePage() {
             <SmoothReveal direction="up" delay={0.2}>
               <div className="relative h-[60vh] rounded-3xl overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1627384113972-f4c0392fe5aa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src="https://cdn.shopify.com/s/files/1/0995/3204/6676/files/collectioncomplete.png?v=1764929709"
                   alt="Gamme complète de produits Meeniyé"
                   fill
                   className="object-cover"
@@ -224,7 +224,7 @@ export default async function HomePage() {
                   {
                     name: 'Masques / Après-shampoings',
                     image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=2574',
-                    link: '/collections/masques'
+                    link: '/collections/masques-apres-shampoings'
                   },
                   {
                     name: 'Crèmes hydratantes sans rinçage',
@@ -282,21 +282,21 @@ export default async function HomePage() {
                   name: 'Gombo',
                   subtitle: 'Hydratation profonde',
                   description: 'Riche en mucilages, le gombo apporte une hydratation intense, démêle naturellement et définit les boucles tout en laissant les cheveux doux, brillants et souples.',
-                  image: 'https://images.unsplash.com/photo-1632014530325-3911c738b779?q=80&w=2046&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/gombo.jpg?v=1764931044',
                   color: '#077532'
                 },
                 {
                   name: 'Beurre de cacao',
                   subtitle: 'Nutrition & protection',
                   description: 'Ultra-nourrissant, le beurre de cacao scelle l\'hydratation, renforce la fibre capillaire et protège les cheveux crépus des agressions extérieures pour une chevelure plus forte et éclatante.',
-                  image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=2574',
+                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/cacao.jpg?v=1764931045',
                   color: '#582900'
                 },
                 {
                   name: 'Protéine de riz',
                   subtitle: 'Force & volume',
                   description: 'Légère et fortifiante, la protéine de riz aide à réparer la fibre, redonne du corps et booste le volume, pour des cheveux plus résistants, souples et pleins de vitalité.',
-                  image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=2574',
+                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/riz.jpg?v=1764931044',
                   color: '#582900'
                 }
               ].map((ingredient, i) => (
