@@ -4,14 +4,32 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
+
 export const metadata = {
   title: 'Notre Histoire - Meeniyé | Cosmétiques Capillaires Naturels',
   description: 'Découvrez l\'histoire d\'Anolia, fondatrice de Meeniyé, et l\'origine du nom de notre marque inspiré des traditions afro-caribéennes et du peuple marron Boni.',
   openGraph: {
     title: 'Notre Histoire - Meeniyé',
     description: 'Une marque née de la passion pour la beauté naturelle et ancrée dans les traditions afro-caribéennes',
-    type: 'website',
+    url: `${siteUrl}/notre-histoire`,
+    siteName: 'Meeniyé',
+    images: [
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/Anolia_siteinternet_8ef1b3f1-7feb-4d7c-8ed7-ff3c443bb3bb.jpg?v=1764883812',
+        width: 1200,
+        height: 630,
+        alt: 'Anolia, fondatrice de Meeniyé',
+      },
+    ],
     locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Notre Histoire - Meeniyé',
+    description: 'Une marque née de la passion pour la beauté naturelle et ancrée dans les traditions afro-caribéennes',
+    images: ['https://cdn.shopify.com/s/files/1/0995/3204/6676/files/Anolia_siteinternet_8ef1b3f1-7feb-4d7c-8ed7-ff3c443bb3bb.jpg?v=1764883812'],
   },
 };
 
@@ -36,17 +54,26 @@ export default function NotreHistoirePage() {
 
           {/* Section Fondatrice - Anolia */}
           <section className="mb-32">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              <SmoothReveal direction="left">
-                <div className="space-y-12">
-                  {/* Photo 1 - Anolia */}
+            <SmoothReveal direction="up">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#582900]/10 border border-[#582900]/20 rounded-full mb-8">
+                <Sparkles className="w-4 h-4 text-[#582900]" />
+                <span className="text-sm font-medium text-[#582900] tracking-wide uppercase">
+                  Notre Histoire
+                </span>
+              </div>
+            </SmoothReveal>
+
+            <SmoothReveal direction="up" delay={0.1}>
+              <div className="space-y-6 text-lg text-[#2C3E2F]/85 leading-relaxed">
+                {/* Photo flottante à gauche sur desktop */}
+                <div className="float-none lg:float-left lg:w-[45%] lg:mr-8 mb-6 lg:mb-0">
                   <div className="relative h-[500px] rounded-3xl overflow-hidden">
                     <Image
-                      src="https://cdn.shopify.com/s/files/1/0995/3204/6676/files/Anolia_siteinternet_8ef1b3f1-7feb-4d7c-8ed7-ff3c443bb3bb.jpg?v=1764883812"
+                      src="https://cdn.shopify.com/s/files/1/0995/3204/6676/files/Anolia_siteinternet_8ef1b3f1-7feb-4d7c-8ed7-ff3c443bb3bb.webp?v=1765024188"
                       alt="Anolia, fondatrice de Meeniyé"
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      sizes="(max-width: 1024px) 100vw, 45vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/60 via-transparent to-transparent" />
 
@@ -55,49 +82,16 @@ export default function NotreHistoirePage() {
                       <span className="text-sm font-bold text-[#FFFFFF] uppercase tracking-wide">Fondatrice</span>
                     </div>
                   </div>
-
-                  {/* Photo 2 */}
-                  <div className="relative h-[400px] rounded-2xl overflow-hidden">
-                    <Image
-                      src="https://images.unsplash.com/photo-1725398262551-ee160c130a49?q=80&w=985&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Cheveux naturels - Meeniyé"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                  </div>
-
-                  {/* Photo 3 */}
-                  <div className="relative h-[400px] rounded-2xl overflow-hidden">
-                    <Image
-                      src="https://plus.unsplash.com/premium_photo-1730078556990-25234fc2e698?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Soins capillaires naturels - Meeniyé"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                  </div>
                 </div>
-              </SmoothReveal>
 
-              <SmoothReveal direction="right">
-                <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#582900]/10 border border-[#582900]/20 rounded-full mb-4">
-                    <Sparkles className="w-4 h-4 text-[#582900]" />
-                    <span className="text-sm font-medium text-[#582900] tracking-wide uppercase">
-                      Notre Histoire
-                    </span>
-                  </div>
-
-                  <div className="space-y-6 text-lg text-[#2C3E2F]/85 leading-relaxed">
-                    <p>
-                      <strong className="text-[#077532] text-2xl">Anolia, fondatrice de Meeniyé,</strong> est originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux.
-                      Elle puise dans ses racines une inspiration profonde, nourrie notamment
-                      par la richesse de la pharmacopée afro-caraïbéenne, qui met en lumière des plantes, huiles et ingrédients
-                      naturels utilisés depuis des générations pour sublimer et protéger la beauté naturelle. Ce lien avec ces
-                      traditions ancestrales est au cœur de sa vision et guide la création de produits authentiques et respectueux
-                      de l&apos;environnement.
-                    </p>
+                <p>
+                  <strong className="text-[#077532] text-2xl block mb-2">Anolia, fondatrice de Meeniyé.</strong>
+                  Originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux, la fondatrice puise dans ses racines une inspiration profonde, nourrie notamment
+                  par la richesse de la pharmacopée afro-caraïbéenne, qui met en lumière des plantes, huiles et ingrédients
+                  naturels utilisés depuis des générations pour sublimer et protéger la beauté naturelle. Ce lien avec ces
+                  traditions ancestrales est au cœur de sa vision et guide la création de produits authentiques et respectueux
+                  de l&apos;environnement.
+                </p>
 
                     <p>
                       Diplômée d&apos;un master en économie, spécialisé en développement durable, elle débute sa carrière dans le
@@ -195,9 +189,7 @@ export default function NotreHistoirePage() {
                       d&apos;une grand-mère et de sa petite-fille, liées par l&apos;amour, la transmission et la mémoire.&quot;
                     </p>
                   </div>
-                </div>
-              </SmoothReveal>
-            </div>
+            </SmoothReveal>
           </section>
 
           {/* CTA Section */}

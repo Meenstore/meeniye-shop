@@ -7,14 +7,34 @@ import { getProducts } from '@/lib/shopify';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
+
 export const metadata = {
   title: 'Meeniyé - Cosmétiques Capillaires Naturels - Cheveux Crépus, Frisés & Bouclés',
   description: 'Découvrez Meeniyé : soins capillaires professionnels issus de la pharmacopée afro-caribéenne pour cheveux crépus, frisés et bouclés. Livraison France, DOM-TOM, Suisse.',
+  keywords: 'cosmétiques capillaires naturels, cheveux crépus, cheveux frisés, cheveux bouclés, pharmacopée afro-caribéenne, soins capillaires naturels, produits cheveux afro',
+  authors: [{ name: 'Meeniyé' }],
   openGraph: {
     title: 'Meeniyé - Cosmétiques Capillaires Naturels',
     description: 'Expertise alliant tradition et recherche. Formules issues de la pharmacopée afro-caribéenne.',
-    type: 'website',
+    url: siteUrl,
+    siteName: 'Meeniyé',
+    images: [
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/collectioncomplete.png?v=1764929709',
+        width: 1200,
+        height: 630,
+        alt: 'Gamme complète Meeniyé - Cosmétiques capillaires naturels',
+      },
+    ],
     locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Meeniyé - Cosmétiques Capillaires Naturels',
+    description: 'Expertise alliant tradition et recherche. Formules issues de la pharmacopée afro-caribéenne.',
+    images: ['https://cdn.shopify.com/s/files/1/0995/3204/6676/files/collectioncomplete.png?v=1764929709'],
   },
 };
 
@@ -282,21 +302,21 @@ export default async function HomePage() {
                   name: 'Gombo',
                   subtitle: 'Hydratation profonde',
                   description: 'Riche en mucilages, le gombo apporte une hydratation intense, démêle naturellement et définit les boucles tout en laissant les cheveux doux, brillants et souples.',
-                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/gombo.jpg?v=1764931044',
+                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/gombo2.webp?v=1765024589',
                   color: '#077532'
                 },
                 {
                   name: 'Beurre de cacao',
                   subtitle: 'Nutrition & protection',
                   description: 'Ultra-nourrissant, le beurre de cacao scelle l\'hydratation, renforce la fibre capillaire et protège les cheveux crépus des agressions extérieures pour une chevelure plus forte et éclatante.',
-                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/cacao.jpg?v=1764931045',
+                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/cacao2.webp?v=1765024440',
                   color: '#582900'
                 },
                 {
                   name: 'Protéine de riz',
                   subtitle: 'Force & volume',
                   description: 'Légère et fortifiante, la protéine de riz aide à réparer la fibre, redonne du corps et booste le volume, pour des cheveux plus résistants, souples et pleins de vitalité.',
-                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/riz.jpg?v=1764931044',
+                  image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/riz2.webp?v=1765024526',
                   color: '#582900'
                 }
               ].map((ingredient, i) => (

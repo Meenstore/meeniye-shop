@@ -32,11 +32,30 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
+
   return {
-    title: `${product.name} | TechStore`,
-    description: product.description,
+    title: `${product.name} | Meeniyé - Cosmétiques Capillaires Naturels`,
+    description: product.description || `Découvrez ${product.name}, soin capillaire naturel pour cheveux crépus, frisés et bouclés. Formule issue de la pharmacopée afro-caribéenne.`,
     openGraph: {
-      title: product.name,
+      title: `${product.name} - Meeniyé`,
+      description: product.description,
+      url: `${siteUrl}/products/${product.handle}`,
+      siteName: 'Meeniyé',
+      images: [
+        {
+          url: product.images[0]?.url,
+          width: 1200,
+          height: 1200,
+          alt: product.name,
+        },
+      ],
+      locale: 'fr_FR',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} - Meeniyé`,
       description: product.description,
       images: [product.images[0]?.url],
     },
@@ -149,7 +168,7 @@ export default async function ProductPage({ params }) {
                 <SmoothReveal direction="right" delay={0.2}>
                   <div className="flex items-baseline gap-4 mb-8">
                     <span className="text-4xl font-bold text-[#077532]">
-                      {product.currency} ${product.price.toFixed(2)}
+                      {product.currency} € {product.price.toFixed(2)}
                     </span>
                   </div>
                 </SmoothReveal>

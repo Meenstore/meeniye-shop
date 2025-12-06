@@ -18,9 +18,27 @@ const getCategoryIcon = (category) => {
   return Package; // Icône par défaut pour autres
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
+
 export const metadata = {
-  title: 'Tous nos Produits Capillaires Naturels',
-  description: 'Découvrez notre gamme complète de 12 produits capillaires naturels pour cheveux crépus, frisés et bouclés',
+  title: 'Tous nos Produits Capillaires Naturels - Meeniyé',
+  description: 'Découvrez notre gamme complète de produits capillaires naturels pour cheveux crépus, frisés et bouclés. Shampoings, masques, crèmes, gels et sérums issus de la pharmacopée afro-caribéenne.',
+  openGraph: {
+    title: 'Tous nos Produits - Meeniyé',
+    description: 'Gamme complète de soins capillaires naturels pour cheveux texturés',
+    url: `${siteUrl}/products`,
+    siteName: 'Meeniyé',
+    images: [
+      {
+        url: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/collectioncomplete2.webp?v=1765023969',
+        width: 1200,
+        height: 630,
+        alt: 'Gamme complète Meeniyé',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
 };
 
 export default async function AllProductsPage() {
@@ -75,7 +93,7 @@ export default async function AllProductsPage() {
               </h1>
 
               <p className="text-xl text-[#2C3E2F]/75 mb-6">
-                Soins capillaires naturels pour cheveux crépus, frisés et bouclés
+                Soins capillaires naturels pour cheveux crépus et frisés.
               </p>
 
               <p className="text-lg text-[#2C3E2F]/70">
@@ -148,11 +166,7 @@ export default async function AllProductsPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-[#077532] font-medium tracking-wide uppercase">
-                          {product.category}
-                        </span>
-                      </div>
+                 
 
                       <h3 className="text-xl font-bold group-hover:text-[#077532] transition-colors duration-300 line-clamp-2">
                         {product.name}

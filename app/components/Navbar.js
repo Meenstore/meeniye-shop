@@ -58,7 +58,7 @@ export default function Navbar() {
             {/* Logo - Centre */}
             <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
               <img
-                src="https://cdn.shopify.com/s/files/1/0963/8435/2638/files/Meenlogo_72d16e8a-27b4-4af1-a688-a681181b2a00.png?v=1764545222"
+                src="/Meenlogo.png"
                 alt="Meeniyé"
                 className="h-24 md:h-26 w-auto"
               />
@@ -118,7 +118,7 @@ export default function Navbar() {
                       onClick={() => setShowMobileMenu(false)}
                       className="text-base text-[#2C3E2F]/70 hover:text-[#077532] transition-colors"
                     >
-                      Hydratation Intense
+                      Gamme Hydratation Intense
                     </Link>
                     <Link
                       href="/collections/gamme-revigorante"

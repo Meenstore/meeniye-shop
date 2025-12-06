@@ -40,17 +40,27 @@ export async function generateMetadata({ params }) {
 
     if (!collection) {
       return {
-        title: 'Collection non trouvée - TechStore',
+        title: 'Collection non trouvée - Meeniyé',
       };
     }
 
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
+
     return {
-      title: `${collection.title} - TechStore`,
-      description: collection.description || `Découvrez notre collection ${collection.title.toLowerCase()}`,
+      title: `${collection.title} - Meeniyé | Cosmétiques Capillaires Naturels`,
+      description: collection.description || `Découvrez notre collection ${collection.title.toLowerCase()} : soins capillaires naturels pour cheveux crépus, frisés et bouclés.`,
+      openGraph: {
+        title: `${collection.title} - Meeniyé`,
+        description: collection.description || `Découvrez notre collection ${collection.title.toLowerCase()}`,
+        url: `${siteUrl}/collections/${handle}`,
+        siteName: 'Meeniyé',
+        locale: 'fr_FR',
+        type: 'website',
+      },
     };
   } catch (error) {
     return {
-      title: 'Collection - TechStore',
+      title: 'Collection - Meeniyé',
     };
   }
 }

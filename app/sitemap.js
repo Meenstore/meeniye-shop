@@ -19,6 +19,24 @@ export default async function sitemap() {
       changeFrequency: 'daily',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/notre-histoire`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/espace-pro`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 
   // Récupérer tous les produits
@@ -35,14 +53,15 @@ export default async function sitemap() {
     console.error('Error generating product sitemap:', error);
   }
 
-  // Collections
+  // Collections Meeniyé
   const collectionHandles = [
-    'nouveautes',
-    'promotions',
-    'smartphones',
-    'ordinateurs-portables',
-    'montres-connectees',
-    'ecouteurs-audio',
+    'shampoings',
+    'masques-apres-shampoings',
+    'cremes',
+    'gels',
+    'serums-traitants',
+    'hydratation-intense',
+    'gamme-revigorante',
   ];
 
   const collectionPages = collectionHandles.map((handle) => ({
