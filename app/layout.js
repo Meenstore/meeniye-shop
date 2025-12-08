@@ -20,6 +20,8 @@ export const metadata = {
     index: false,
     follow: false,
   },
+  // Force le mode clair même si l'appareil est en mode sombre
+  colorScheme: 'light',
 };
 
 export default function RootLayout({ children }) {

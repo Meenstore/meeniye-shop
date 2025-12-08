@@ -11,7 +11,7 @@ export default function ImageParallaxZoom({
   src,
   alt = '',
   height = '100vh',
-  zoomIntensity = 1.6,
+  zoomIntensity = 1.4,
   className = ''
 }) {
   const containerRef = useRef(null);

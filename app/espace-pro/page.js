@@ -5,7 +5,7 @@ import Navbar from '@/app/components/Navbar';
 import SmoothReveal from '@/app/components/SmoothReveal';
 import ImageParallaxZoom from '@/app/components/ImageParallaxZoom';
 import Link from 'next/link';
-import { ArrowLeft, Briefcase, Package, Phone, Mail, Building, CheckCircle2, Scissors } from 'lucide-react';
+import { ArrowLeft, Briefcase, Mail, Building, CheckCircle2, Scissors } from 'lucide-react';
 
 export default function EspaceProPage() {
   const [formData, setFormData] = useState({
@@ -118,7 +118,7 @@ export default function EspaceProPage() {
           <SmoothReveal direction="up" delay={0.2}>
             <div className="relative h-[50vh] rounded-3xl overflow-hidden mb-20">
               <ImageParallaxZoom
-                src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2669"
+                src="https://cdn.shopify.com/s/files/1/0995/3204/6676/files/photo_pour_espace_pro.webp?v=1765150931"
                 alt="Salon de coiffure professionnel"
                 height="100%"
                 zoomIntensity={1.15}
@@ -126,10 +126,10 @@ export default function EspaceProPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
 
               {/* Overlay text */}
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-end justify-center">
                 <div className="text-center">
-                  <Scissors className="w-16 h-16 text-[#077532] mx-auto mb-4" />
-                  <h2 className="text-4xl font-bold">Partenaire des Professionnels</h2>
+                  <Scissors className="w-12 h-12 text-[#04712e] mx-auto mb-2" />
+                  <h2 className="text-4xl font-bold text-[#04712e] mb-6">Partenaire des Professionnels</h2>
                 </div>
               </div>
             </div>
@@ -148,24 +148,18 @@ export default function EspaceProPage() {
               </div>
             </SmoothReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-4xl mx-auto">
               {[
                 {
-                  icon: Package,
-                  title: 'Formats Professionnels',
-                  desc: 'Gros conditionnements adaptés à une utilisation intensive en salon',
-                  color: '#582900'
-                },
-                {
                   icon: Building,
-                  title: 'Tarifs Dégressifs',
-                  desc: 'Conditions tarifaires préférentielles selon les volumes commandés',
+                  title: 'Conditions Spéciales',
+                  desc: 'Contactez-nous pour discuter de conditions adaptées à vos besoins professionnels',
                   color: '#582900'
                 },
                 {
-                  icon: Phone,
-                  title: 'Accompagnement Dédié',
-                  desc: 'Un contact privilégié pour répondre à toutes vos questions',
+                  icon: Mail,
+                  title: 'Contact Privilégié',
+                  desc: 'Un échange direct par email pour répondre à toutes vos questions',
                   color: '#077532'
                 }
               ].map((avantage, i) => (
@@ -206,15 +200,7 @@ export default function EspaceProPage() {
                       <Mail className="w-6 h-6 text-[#077532] mt-1 flex-shrink-0" />
                       <div>
                         <h4 className="font-semibold mb-1">Email professionnel</h4>
-                        <p className="text-[#2C3E2F]/75 text-sm">pro@votredomaine.com</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-6 rounded-2xl bg-[#F8F9FA] border border-[#2C3E2F]/5">
-                      <Phone className="w-6 h-6 text-[#077532] mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold mb-1">Téléphone</h4>
-                        <p className="text-[#2C3E2F]/75 text-sm">Du lundi au vendredi, 9h-18h</p>
+                        <p className="text-[#2C3E2F]/75 text-sm">Utilisez le formulaire ci-contre</p>
                       </div>
                     </div>
                   </div>

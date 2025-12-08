@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Navbar from '@/app/components/Navbar';
 import SmoothReveal from '@/app/components/SmoothReveal';
 import Link from 'next/link';
-import { ArrowLeft, Mail, Phone, MapPin, Clock, Send, CheckCircle2, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Mail, Send, CheckCircle2, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -109,35 +109,14 @@ export default function ContactPage() {
 
           {/* Informations de contact */}
           <section className="mb-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-md mx-auto">
               {[
                 {
                   icon: Mail,
                   title: 'Email',
-                  info: 'contact@votredomaine.com',
+                  info: 'Utilisez le formulaire ci-dessous',
                   desc: 'Réponse sous 24-48h',
-                  color: '#582900'
-                },
-                {
-                  icon: Phone,
-                  title: 'Téléphone',
-                  info: '+33 X XX XX XX XX',
-                  desc: 'Lun-Ven : 9h-18h',
-                  color: '#582900'
-                },
-                {
-                  icon: MapPin,
-                  title: 'Adresse',
-                  info: 'France métropolitaine',
-                  desc: 'DOM-TOM & Suisse',
                   color: '#077532'
-                },
-                {
-                  icon: Clock,
-                  title: 'Horaires',
-                  info: '9h00 - 18h00',
-                  desc: 'Du lundi au vendredi',
-                  color: '#582900'
                 }
               ].map((contact, i) => (
                 <SmoothReveal key={i} direction="up" delay={i * 0.1}>
@@ -284,19 +263,23 @@ export default function ContactPage() {
                     {[
                       {
                         question: 'Quels sont les délais de livraison ?',
-                        answer: 'Livraison en France métropolitaine sous 3-5 jours ouvrés. Pour les DOM-TOM et la Suisse, comptez 7-10 jours ouvrés.'
+                        answer: 'Les délais varient selon votre localisation. Vous serez informé(e) des délais estimés lors de la validation de votre commande.'
                       },
                       {
                         question: 'Comment suivre ma commande ?',
-                        answer: 'Vous recevrez un email de confirmation avec un lien de suivi dès l\'expédition de votre commande.'
+                        answer: 'Vous recevrez un email de confirmation avec un lien de suivi dès l\'expédition de votre commande par notre transporteur.'
                       },
                       {
                         question: 'Puis-je retourner un produit ?',
-                        answer: 'Oui, vous disposez de 30 jours pour retourner un produit non ouvert. Les frais de retour sont à votre charge.'
+                        answer: 'Conformément au droit de rétractation, vous disposez de 14 jours pour retourner un produit non utilisé dans son emballage d\'origine. Les frais de retour sont à votre charge sauf en cas de produit défectueux.'
                       },
                       {
-                        question: 'Les produits sont-ils adaptés à tous types de cheveux ?',
-                        answer: 'Nos produits sont spécifiquement formulés pour les cheveux crépus, frisés et bouclés, mais conviennent à tous.'
+                        question: 'Y a-t-il des frais supplémentaires pour les DOM-TOM ?',
+                        answer: 'Pour les livraisons en DOM-TOM, des droits de douane et taxes locales peuvent s\'appliquer selon la réglementation en vigueur. Ces frais sont à la charge du destinataire.'
+                      },
+                      {
+                        question: 'Les prix incluent-ils la TVA ?',
+                        answer: 'Oui, tous nos prix sont TTC (toutes taxes comprises) pour la France métropolitaine. Pour les DOM-TOM et la Suisse, la TVA française sera déduite et les taxes locales applicables seront ajoutées.'
                       }
                     ].map((faq, i) => (
                       <div

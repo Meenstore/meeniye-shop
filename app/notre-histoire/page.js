@@ -3,6 +3,8 @@ import SmoothReveal from '@/app/components/SmoothReveal';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Sparkles } from 'lucide-react';
+import { getPage } from '@/lib/shopify';
+import DOMPurify from 'isomorphic-dompurify';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
 
@@ -33,7 +35,31 @@ export const metadata = {
   },
 };
 
-export default function NotreHistoirePage() {
+// Revalider la page toutes les 10 minutes
+export const revalidate = 600;
+
+export default async function NotreHistoirePage() {
+  // Récupérer le contenu depuis Shopify
+  const pageContent = await getPage('notre-histoire');
+
+  // Contenu par défaut si la page Shopify n'existe pas encore
+  const defaultContent = `
+    <p><strong style="font-size: 1.5rem; color: #077532; display: block; margin-bottom: 0.5rem;">Anolia, fondatrice de Meeniyé.</strong>
+    Originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux, la fondatrice puise dans ses racines une inspiration profonde, nourrie notamment par la richesse de la pharmacopée afro-caraïbéenne, qui met en lumière des plantes, huiles et ingrédients naturels utilisés depuis des générations pour sublimer et protéger la beauté naturelle. Ce lien avec ces traditions ancestrales est au cœur de sa vision et guide la création de produits authentiques et respectueux de l'environnement.</p>
+
+    <p>Diplômée d'un master en économie, spécialisé en développement durable, elle débute sa carrière dans le secteur associatif en tant que copilote de projets de développement. Elle rejoint ensuite le secteur public, où elle exerce la fonction de chargée des dispositifs d'aides européennes, avant de se réorienter vers une nouvelle filière plus en accord avec ses aspirations personnelles.</p>
+
+    <p>Cherchant une dimension plus humaine et créative dans son épanouissement professionnel, elle se tourne vers la coiffure, domaine qu'elle pratique d'abord par passion. Pour donner forme à cette vocation, elle passe son brevet de technicien supérieur métiers de la coiffure, qu'elle complète par une formation en formulation et en création de marque de produits cosmétiques naturels.</p>
+
+    <h3 style="font-size: 2rem; font-weight: bold; margin-top: 3rem; margin-bottom: 1.5rem;"><span style="color: #077532;">Meeniyé</span>, un nom. Une histoire.</h3>
+
+    <p style="font-size: 1.5rem; font-weight: bold; color: #077532;">"Le nom de ma marque, Meeniyé, est un hommage rendu à ma grand-mère Ameeniyé, femme guyanaise issue du peuple marron Boni.</p>
+
+    <p>Ce prénom, chargé d'histoire et de sens, est une porte ouverte sur mes racines profondes, une reconnexion intime avec une culture forgée par la résistance, la liberté et la créativité."</p>
+  `;
+
+  const content = pageContent ? pageContent.body : defaultContent;
+
   return (
     <>
       <Navbar />
@@ -67,128 +93,29 @@ export default function NotreHistoirePage() {
               <div className="space-y-6 text-lg text-[#2C3E2F]/85 leading-relaxed">
                 {/* Photo flottante à gauche sur desktop */}
                 <div className="float-none lg:float-left lg:w-[45%] lg:mr-8 mb-6 lg:mb-0">
-                  <div className="relative h-[500px] rounded-3xl overflow-hidden">
+                  <div className="relative aspect-[3/4] max-h-[800px] rounded-3xl overflow-hidden">
                     <Image
                       src="https://cdn.shopify.com/s/files/1/0995/3204/6676/files/Anolia_siteinternet_8ef1b3f1-7feb-4d7c-8ed7-ff3c443bb3bb.webp?v=1765024188"
                       alt="Anolia, fondatrice de Meeniyé"
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                       sizes="(max-width: 1024px) 100vw, 45vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/60 via-transparent to-transparent" />
-
-                    {/* Badge décoratif */}
-                    <div className="absolute top-8 right-8 bg-[#582900]/90 backdrop-blur-sm px-6 py-3 rounded-full">
-                      <span className="text-sm font-bold text-[#FFFFFF] uppercase tracking-wide">Fondatrice</span>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#FFFFFF]/60 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
 
-                <p>
-                  <strong className="text-[#077532] text-2xl block mb-2">Anolia, fondatrice de Meeniyé.</strong>
-                  Originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux, la fondatrice puise dans ses racines une inspiration profonde, nourrie notamment
-                  par la richesse de la pharmacopée afro-caraïbéenne, qui met en lumière des plantes, huiles et ingrédients
-                  naturels utilisés depuis des générations pour sublimer et protéger la beauté naturelle. Ce lien avec ces
-                  traditions ancestrales est au cœur de sa vision et guide la création de produits authentiques et respectueux
-                  de l&apos;environnement.
-                </p>
-
-                    <p>
-                      Diplômée d&apos;un master en économie, spécialisé en développement durable, elle débute sa carrière dans le
-                      secteur associatif en tant que copilote de projets de développement. Elle rejoint ensuite le secteur public,
-                      où elle exerce la fonction de chargée des dispositifs d&apos;aides européennes, avant de se réorienter vers une
-                      nouvelle filière plus en accord avec ses aspirations personnelles.
-                    </p>
-
-                    <p>
-                      Cherchant une dimension plus humaine et créative dans son épanouissement professionnel, elle se tourne vers
-                      la coiffure, domaine qu&apos;elle pratique d&apos;abord par passion. Pour donner forme à cette vocation, elle passe son
-                      brevet de technicien supérieur métiers de la coiffure, qu&apos;elle complète par une formation en formulation et en
-                      création de marque de produits cosmétiques naturels.
-                    </p>
-
-                    <p>
-                      Elle débute sa nouvelle carrière dans un salon spécialisé à Genève (Suisse), où elle cumule simultanément les
-                      responsabilités de chargée des affaires commerciales et d&apos;experte capillaire dédiée aux cheveux texturés, un
-                      poste valorisant son savoir-faire technique et relationnel. Parallèlement elle met toute son énergie et sa
-                      passion à élaborer sa propre gamme de produits cosmétiques, alliant rigueur et passion. Après s&apos;être forgée
-                      une solide expérience dans des salons spécialisés à Genève, elle s&apos;investit aujourd&apos;hui avec passion dans le
-                      développement d&apos;une marque porteuse de sens.
-                    </p>
-
-                    <p>
-                      Femme engagée et déterminée, elle consacre depuis plus de trois ans et demi une énergie constante à la
-                      formulation de ses produits. Elle est animée par la volonté de proposer le meilleur à celles et ceux qui
-                      recherchent des solutions authentiques inspirées des trésors de la pharmacopée afro-caraïbéenne. Son immersion
-                      quotidienne dans l&apos;univers des cheveux texturés lui a permis de développer une expertise précieuse, essentielle
-                      pour comprendre les besoins spécifiques des cheveux crépus, frisés et bouclés.
-                    </p>
-
-                    <p>
-                      Cette connaissance fine et cette double maîtrise guident la création de chaque produit de sa gamme, afin
-                      d&apos;offrir des soins professionnels parfaitement adaptés et efficaces, élaborés en parfaite connaissance des
-                      besoins spécifiques des cheveux crépus souvent méconnus.
-                    </p>
-
-                    <p className="text-xl font-semibold text-[#077532] italic border-l-4 border-[#077532] pl-6">
-                      Pour elle, le soin des cheveux crépus va bien au-delà de l&apos;esthétique : &quot;c&apos;est un chemin de développement
-                      personnel, d&apos;acceptation de soi et d&apos;émancipation du regard des autres&quot;.
-                    </p>
-
-                    <p>
-                      Elle propose à chaque femme et à chaque homme un accompagnement sur mesure, encourageant chacune et chacun
-                      à embrasser son authenticité et à célébrer son histoire.
-                    </p>
-
-                    <p>
-                      Dans ce projet, elle met en avant la diversité et l&apos;unicité de chaque parcours capillaire, plaçant le respect
-                      et l&apos;écoute au cœur de sa démarche. Sa marque invite à une (re)découverte de soi, une connexion à ses racines,
-                      à son histoire, à sa force affirmant que chaque texture, chaque boucle raconte une histoire à valoriser.
-                    </p>
-
-                    <h3 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tighter leading-tight mt-12 mb-6">
-                      <span className="text-[#077532]">Meeniyé</span>, un nom. Une histoire.
-                    </h3>
-
-                    <p className="text-2xl font-bold text-[#077532]">
-                      &quot;Le nom de ma marque, Meeniyé, est un hommage rendu à ma grand-mère Ameeniyé, femme guyanaise
-                      issue du peuple marron Boni.
-                    </p>
-
-                    <p>
-                      Ce prénom, chargé d&apos;histoire et de sens, est une porte ouverte sur mes racines profondes, une reconnexion
-                      intime avec une culture forgée par la résistance, la liberté et la créativité.
-                    </p>
-
-                    <p>
-                      Les marrons Boni ont bravé l&apos;oppression du système esclavagiste pour fonder des sociétés libres le long du
-                      fleuve Maroni, dans cet écrin luxuriant où la forêt amazonienne donne vie à la mémoire des Ancêtres. Ce
-                      peuple de guerriers est connu pour sa grande résilience et son histoire de liberté.
-                    </p>
-
-                    <p>
-                      Après leur auto libération, les Boni ont élaboré une culture, une langue et des savoirs nouveaux. Ils
-                      symbolisent la force, la résistance et la paix retrouvée.
-                    </p>
-
-                    <p>
-                      Ma grand-mère, dont le prénom a inspiré le nom de la marque, incarne ces valeurs essentielles à travers
-                      son parcours de vie, marqué par la ténacité, l&apos;amour et la sagesse.
-                    </p>
-
-                    <p>
-                      Au-delà de cette symbolique forte, la marque s&apos;appuie sur une philosophie ancestrale du soin, inspirée de
-                      la pharmacopée afro-caraïbéenne. Meeniyé est ainsi une véritable célébration de la beauté noire, enracinée
-                      dans la nature et la culture, puisant sa force dans un héritage historique et familial. C&apos;est une marque
-                      qui invite à la reconnexion avec soi-même, avec ses racines, avec la richesse d&apos;un peuple et de plusieurs
-                      continents.
-                    </p>
-
-                    <p className="text-xl font-semibold text-[#582900]">
-                      Elle traduit aussi ce lien profond entre générations. On retrouve dans Meeniyé la complicité et la douceur
-                      d&apos;une grand-mère et de sa petite-fille, liées par l&apos;amour, la transmission et la mémoire.&quot;
-                    </p>
-                  </div>
+                {/* Contenu dynamique depuis Shopify */}
+                <div
+                  className="prose prose-lg max-w-none [&>p]:mb-6 [&>h3]:mt-12 [&>h3]:mb-6 [&>h3]:text-3xl [&>h3]:font-bold"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(content, {
+                      ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'b', 'i', 'u', 'ul', 'ol', 'li', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'code', 'span', 'div'],
+                      ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'style']
+                    })
+                  }}
+                />
+              </div>
             </SmoothReveal>
           </section>
 

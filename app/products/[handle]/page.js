@@ -79,6 +79,9 @@ export async function generateStaticParams() {
 // Si un produit n'était pas dans generateStaticParams, il sera rendu à la demande (SSR)
 export const dynamicParams = true;
 
+// Revalider les pages statiques toutes les 10 minutes pour économiser les crédits Netlify
+export const revalidate = 600; // 10 minutes
+
 export default async function ProductPage({ params }) {
   const { handle } = await params;
   const product = await getProduct(handle);
@@ -125,12 +128,12 @@ export default async function ProductPage({ params }) {
                 </div>
               </SmoothReveal>
 
-              {/* Thumbnails */}
+              {/* Images secondaires */}
               {product.images.length > 1 && (
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   {product.images.slice(1, 5).map((image, i) => (
                     <SmoothReveal key={i} direction="up" delay={i * 0.1}>
-                      <div className="relative aspect-square rounded-lg overflow-hidden bg-[#F8F9FA] cursor-pointer hover:opacity-80 transition-opacity">
+                      <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#F8F9FA]">
                         <img
                           src={image.url}
                           alt={image.alt}

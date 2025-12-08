@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const { cartCount, openDrawer } = useCart();
 
@@ -15,13 +15,17 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Si on remonte (et qu'on a scrollé un minimum)
-      if (currentScrollY < lastScrollY && currentScrollY > 100) {
-        setIsScrollingUp(true);
+      // Si on est tout en haut (< 100px), toujours afficher
+      if (currentScrollY < 100) {
+        setIsVisible(true);
       }
-      // Si on descend ou qu'on est en haut de page
-      else {
-        setIsScrollingUp(false);
+      // Si on remonte (scrolling up), afficher
+      else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+      // Si on descend (scrolling down), cacher
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
       }
 
       setLastScrollY(currentScrollY);
@@ -33,17 +37,17 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-8 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrollingUp
-          ? 'bg-white/95 backdrop-blur-xl border-b border-[#582900]/10 shadow-lg'
-          : 'bg-transparent border-b border-transparent'
+      <nav className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
+        isVisible
+          ? 'top-8 bg-white/95 backdrop-blur-xl border-b border-[#582900]/10 shadow-lg'
+          : '-top-32 bg-transparent border-b border-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-6">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 mt-2">
           <div className="flex items-center justify-between">
             {/* Menu Hamburger - Gauche */}
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="text-[#2C3E2F] hover:text-[#077532] transition-colors p-2"
+              className="text-[#2C3E2F] hover:text-[#077532] transition-colors p-2 flex items-center"
               aria-label="Menu"
             >
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,36 +60,29 @@ export default function Navbar() {
             </button>
 
             {/* Logo - Centre */}
-            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2 flex items-center mb-4 mt-2">
               <img
-                src="/Meenlogo.png"
+                src="/logorefined-2.png"
                 alt="Meeniyé"
-                className="h-24 md:h-26 w-auto"
+                className="h-16 md:h-17 w-auto"
               />
             </Link>
 
-            {/* Icônes - Droite */}
-            <div className="flex items-center gap-4">
-              <button className="text-[#2C3E2F] hover:text-[#077532] transition-colors p-2">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-              <button
-                onClick={openDrawer}
-                className="relative text-[#2C3E2F] hover:text-[#077532] transition-colors p-2"
-                title="Ouvrir le panier"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-[#582900] text-[#FFFFFF] text-xs font-bold rounded-full flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
-            </div>
+            {/* Icône Panier - Droite */}
+            <button
+              onClick={openDrawer}
+              className="relative text-[#2C3E2F] hover:text-[#077532] transition-colors p-2 flex items-center"
+              title="Ouvrir le panier"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 h-5 w-5 bg-[#582900] text-[#FFFFFF] text-xs font-bold rounded-full flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </button>
           </div>
         </div>
       </nav>
