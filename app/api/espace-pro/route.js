@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { Resend } from 'resend';
+import { sendEmail } from '@/lib/email';
 import { checkRateLimit } from '@/lib/ratelimit';
 
 // Schema de validation Zod
@@ -45,28 +45,6 @@ export async function POST(request) {
     // Valider avec Zod
     const validatedData = espaceProSchema.parse(body);
 
-    // Vérifier si Resend est configuré
-    const resendApiKey = process.env.RESEND_API_KEY;
-
-    if (!resendApiKey || resendApiKey === 'your_resend_api_key_here') {
-      // Mode développement : on log juste les données
-      console.log('📧 [DEV MODE] Email Espace Pro qui serait envoyé:', {
-        from: 'noreply@meeniye.com',
-        to: 'pro@meeniye.com', // Email dédié espace pro (ou contact@)
-        subject: `[ESPACE PRO] Demande de ${validatedData.entreprise}`,
-        replyTo: validatedData.email,
-        data: validatedData
-      });
-
-      return NextResponse.json({
-        success: true,
-        message: 'Mode développement : email simulé avec succès'
-      });
-    }
-
-    // Mode production : envoyer vraiment l'email
-    const resend = new Resend(resendApiKey);
-
     // Mapper le type de professionnel pour l'affichage
     const typeProMap = {
       'salon-afro': 'Salon de coiffure afro',
@@ -76,9 +54,10 @@ export async function POST(request) {
       'autre': 'Autre'
     };
 
-    const { data, error } = await resend.emails.send({
-      from: 'noreply@meeniye.com',
-      to: 'contact@meeniye.com', // Ou pro@meeniye.com si email dédié
+    // Envoyer l'email via SMTP OVH
+    await sendEmail({
+      from: `Meeniyé Pro <${process.env.SMTP_USER || 'contact@meeniye.com'}>`,
+      to: 'contact@meeniye.com',
       subject: `[ESPACE PRO] Demande de ${validatedData.entreprise}`,
       replyTo: validatedData.email,
       html: `
@@ -103,16 +82,6 @@ export async function POST(request) {
         <p><em>Email envoyé depuis le formulaire Espace Pro de meeniye.com</em></p>
       `
     });
-
-    if (error) {
-      console.error('❌ Erreur Resend:', error);
-      return NextResponse.json(
-        { error: 'Erreur lors de l\'envoi de l\'email' },
-        { status: 500 }
-      );
-    }
-
-    console.log('✅ Email Espace Pro envoyé avec succès:', data);
 
     return NextResponse.json({
       success: true,

@@ -131,13 +131,7 @@ export default function Navbar() {
                     >
                       Sérums Traitants
                     </Link>
-                    <Link
-                      href="/collections/produits-unite"
-                      onClick={() => setShowMobileMenu(false)}
-                      className="text-base text-[#2C3E2F]/70 hover:text-[#077532] transition-colors"
-                    >
-                      Produits à l&apos;unité
-                    </Link>
+                 
                   </div>
                 )}
               </div>
