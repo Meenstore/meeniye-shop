@@ -279,7 +279,7 @@ export default function ContactPage() {
                       },
                       {
                         question: 'Les prix incluent-ils la TVA ?',
-                        answer: 'Oui, tous nos prix sont TTC (toutes taxes comprises) pour la France métropolitaine. Pour les DOM-TOM et la Suisse, la TVA française sera déduite et les taxes locales applicables seront ajoutées.'
+                        answer: 'Oui, tous nos prix sont TTC (toutes taxes comprises). Le prix affiché est le prix final. Pour les livraisons hors UE (Suisse, etc.), des droits de douane peuvent s\'appliquer à la réception.'
                       }
                     ].map((faq, i) => (
                       <div

@@ -11,11 +11,14 @@ import DOMPurify from 'isomorphic-dompurify';
 // Mapper les catégories Shopify (en anglais) vers les noms français
 const getCategoryDisplayName = (category) => {
   const categoryMapping = {
-    'Mobile & Smart Phones': 'Smartphones',
-    'Laptops': 'Ordinateurs portables',
-    'Smart Watches': 'Montres Connectées',
-    'Over-Ear Headphones': 'Écouteurs & Audio',
-    'Accessories': 'Accessoires'
+    'Shampoos': 'Shampoings',
+    'Conditioners': 'Après-shampoings',
+    'Masks': 'Masques',
+    'Creams': 'Crèmes',
+    'Gels': 'Gels',
+    'Balms': 'Baumes',
+    'Serums': 'Sérums',
+    'Hair Care': 'Soins Capillaires'
   };
 
   return categoryMapping[category] || category;
@@ -109,16 +112,16 @@ export default async function ProductPage({ params }) {
             <span>Retour à l&apos;accueil</span>
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* Images Section */}
             <div className="space-y-4">
               <SmoothReveal direction="left">
-                <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#F8F9FA]">
+                <div className="relative aspect-[3/4] max-h-[700px] rounded-2xl overflow-hidden bg-[#F8F9FA]">
                   {product.images[0] ? (
                     <img
                       src={product.images[0].url}
                       alt={product.images[0].alt}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center"
                     />
                   ) : (
                     <div className="flex items-center justify-center h-full text-[#2C3E2F]/70">
@@ -133,11 +136,11 @@ export default async function ProductPage({ params }) {
                 <div className="grid grid-cols-2 gap-4">
                   {product.images.slice(1, 5).map((image, i) => (
                     <SmoothReveal key={i} direction="up" delay={i * 0.1}>
-                      <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#F8F9FA]">
+                      <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#F8F9FA]">
                         <img
                           src={image.url}
                           alt={image.alt}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-center"
                         />
                       </div>
                     </SmoothReveal>
@@ -150,19 +153,6 @@ export default async function ProductPage({ params }) {
             <div className="space-y-8">
               <div>
                 <SmoothReveal direction="right">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-sm text-[#077532] font-medium tracking-wide uppercase">
-                      {getCategoryDisplayName(product.category)}
-                    </span>
-                    {product.tags.some(tag => tag.toLowerCase() === 'new') && (
-                      <span className="px-3 py-1 text-xs font-bold tracking-wide uppercase rounded bg-[#582900] text-[#2C3E2F]">
-                        Nouveau
-                      </span>
-                    )}
-                  </div>
-                </SmoothReveal>
-
-                <SmoothReveal direction="right" delay={0.1}>
                   <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tighter mb-6">
                     {product.name}
                   </h1>
@@ -211,7 +201,7 @@ export default async function ProductPage({ params }) {
                           <span className="block text-sm font-medium">{variant.title}</span>
                           {variant.title !== 'Default Title' && (
                             <span className="block text-xs text-[#2C3E2F]/75 mt-1">
-                              ${variant.price.toFixed(2)}
+                              €{variant.price.toFixed(2)}
                             </span>
                           )}
                         </button>

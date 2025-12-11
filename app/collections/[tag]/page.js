@@ -4,29 +4,20 @@ import Navbar from '@/app/components/Navbar';
 import SmoothReveal from '@/app/components/SmoothReveal';
 import ImageParallaxZoom from '@/app/components/ImageParallaxZoom';
 import AddToCartButton from '@/app/components/AddToCartButton';
-import { ArrowLeft, Smartphone, Laptop, Watch, Headphones, Package } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
-
-// Mapper les catégories Shopify aux icônes Lucide
-const getCategoryIcon = (category) => {
-  const categoryLower = (category || '').toLowerCase();
-
-  if (categoryLower.includes('phone') || categoryLower.includes('mobile')) return Smartphone;
-  if (categoryLower.includes('laptop') || categoryLower.includes('computer')) return Laptop;
-  if (categoryLower.includes('watch')) return Watch;
-  if (categoryLower.includes('headphone') || categoryLower.includes('audio') || categoryLower.includes('écouteur')) return Headphones;
-
-  return Package; // Icône par défaut pour accessoires/autres
-};
 
 // Mapper les catégories Shopify (en anglais) vers les noms français
 const getCategoryDisplayName = (category) => {
   const categoryMapping = {
-    'Mobile & Smart Phones': 'Smartphones',
-    'Laptops': 'Ordinateurs portables',
-    'Smart Watches': 'Montres Connectées',
-    'Over-Ear Headphones': 'Écouteurs & Audio',
-    'Accessories': 'Accessoires'
+    'Shampoos': 'Shampoings',
+    'Conditioners': 'Après-shampoings',
+    'Masks': 'Masques',
+    'Creams': 'Crèmes',
+    'Gels': 'Gels',
+    'Balms': 'Baumes',
+    'Serums': 'Sérums',
+    'Hair Care': 'Soins Capillaires'
   };
 
   return categoryMapping[category] || category;
@@ -143,7 +134,7 @@ export default async function CollectionPage({ params }) {
               {enhancedProducts.map((product, i) => (
                 <SmoothReveal key={product.id} direction="up" delay={i * 0.05}>
                   <Link href={`/products/${product.handle}`} className="block group">
-                    <div className="relative h-80 rounded-2xl overflow-hidden mb-4">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
                       <ImageParallaxZoom
                         src={product.image}
                         alt={product.name}
@@ -175,23 +166,11 @@ export default async function CollectionPage({ params }) {
                     </div>
 
                     <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-[#077532] font-medium tracking-wide uppercase">
-                          {getCategoryDisplayName(product.category)}
-                        </span>
-                      </div>
-
                       <h3 className="text-xl font-bold group-hover:text-[#077532] transition-colors duration-300">
                         {product.name}
                       </h3>
 
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold">${product.price}</span>
-                        {(() => {
-                          const Icon = getCategoryIcon(product.category);
-                          return <Icon className="w-6 h-6 text-[#077532]" />;
-                        })()}
-                      </div>
+                      <span className="text-2xl font-bold">€{product.price}</span>
                     </div>
                   </Link>
                 </SmoothReveal>

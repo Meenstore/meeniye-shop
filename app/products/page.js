@@ -4,19 +4,7 @@ import Navbar from '@/app/components/Navbar';
 import SmoothReveal from '@/app/components/SmoothReveal';
 import ImageParallaxZoom from '@/app/components/ImageParallaxZoom';
 import AddToCartButton from '@/app/components/AddToCartButton';
-import { ArrowLeft, Droplets, Sparkles, Leaf, Heart, Package } from 'lucide-react';
-
-// Mapper les catégories Shopify aux icônes Lucide
-const getCategoryIcon = (category) => {
-  const categoryLower = (category || '').toLowerCase();
-
-  if (categoryLower.includes('hydratation') || categoryLower.includes('hydrate')) return Droplets;
-  if (categoryLower.includes('revigorant') || categoryLower.includes('fortifiant')) return Sparkles;
-  if (categoryLower.includes('sérum') || categoryLower.includes('serum') || categoryLower.includes('traitement')) return Heart;
-  if (categoryLower.includes('naturel') || categoryLower.includes('bio')) return Leaf;
-
-  return Package; // Icône par défaut pour autres
-};
+import { ArrowLeft } from 'lucide-react';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
 
@@ -134,7 +122,7 @@ export default async function AllProductsPage() {
               {enhancedProducts.map((product, i) => (
                 <SmoothReveal key={product.id} direction="up" delay={i * 0.03}>
                   <Link href={`/products/${product.handle}`} className="block group">
-                    <div className="relative h-80 rounded-2xl overflow-hidden mb-4">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
                       <ImageParallaxZoom
                         src={product.image}
                         alt={product.name}
@@ -166,19 +154,11 @@ export default async function AllProductsPage() {
                     </div>
 
                     <div className="space-y-2">
-                 
-
                       <h3 className="text-xl font-bold group-hover:text-[#077532] transition-colors duration-300 line-clamp-2">
                         {product.name}
                       </h3>
 
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold">{product.price}€</span>
-                        {(() => {
-                          const Icon = getCategoryIcon(product.category);
-                          return <Icon className="w-6 h-6 text-[#077532]" />;
-                        })()}
-                      </div>
+                      <span className="text-2xl font-bold">{product.price}€</span>
                     </div>
                   </Link>
                 </SmoothReveal>

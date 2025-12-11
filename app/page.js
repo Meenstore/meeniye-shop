@@ -4,6 +4,7 @@ import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import AddToCartButton from './components/AddToCartButton';
 import RevealText from './components/RevealText';
+import ImageParallaxZoom from './components/ImageParallaxZoom';
 import { getProducts } from '@/lib/shopify';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -90,14 +91,13 @@ export default async function HomePage() {
 
         {/* Hero Section avec image statique */}
         <section className="relative min-h-[80vh] overflow-hidden mt-28">
-          {/* Image hero statique */}
-          <div className="absolute inset-0 w-full h-full">
-            <img
-              src={heroImage.src}
-              alt={heroImage.alt}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {/* Image hero avec effet parallax zoom */}
+          <ImageParallaxZoom
+            src={heroImage.src}
+            alt={heroImage.alt}
+            height="85vh"
+            zoomIntensity={1.15}
+          />
 
           {/* Carrousel commenté - pour réactiver, décommenter heroImages et HeroCarousel
           <HeroCarousel
@@ -218,11 +218,11 @@ export default async function HomePage() {
                     <SmoothReveal key={product.id} direction="up" delay={i * 0.1}>
                       <Link href={`/products/${product.handle}`}>
                         <div className="w-80 group cursor-pointer">
-                          <div className="relative h-96 rounded-2xl overflow-hidden mb-4">
+                          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
                             <img
                               src={product.image}
                               alt={product.name}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                             />
                             <div className="absolute top-4 right-4">
                               <span className="px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded bg-[#582900] text-[#FFFFFF]">
@@ -249,7 +249,7 @@ export default async function HomePage() {
                   // Placeholder si pas de best-sellers
                   <>
                     <div className="w-80">
-                      <div className="h-96 rounded-2xl bg-[#F8F9FA] mb-4" />
+                      <div className="aspect-[3/4] rounded-2xl bg-[#F8F9FA] mb-4" />
                       <div className="h-6 bg-[#F8F9FA] rounded mb-2 w-3/4" />
                       <div className="h-8 bg-[#F8F9FA] rounded w-1/4" />
                     </div>
@@ -291,7 +291,7 @@ export default async function HomePage() {
                     link: '/collections/masques-apres-shampoings'
                   },
                   {
-                    name: 'Crème hydratante',
+                    name: 'Crèmes hydratantes',
                     image: 'https://cdn.shopify.com/s/files/1/0995/3204/6676/files/creme_hydratante_menthe_poivree2.webp?v=1765023191',
                     link: '/collections/cremes'
                   },
@@ -314,12 +314,12 @@ export default async function HomePage() {
                   <SmoothReveal key={i} direction="up" delay={i * 0.1}>
                     <Link href={category.link}>
                       <div className="w-72 group cursor-pointer">
-                        <div className="relative h-80 rounded-2xl overflow-hidden mb-4">
+                        <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
                           <Image
                             src={category.image}
                             alt={category.name}
                             fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                             sizes="288px"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E2F]/60 to-transparent" />
@@ -371,12 +371,12 @@ export default async function HomePage() {
               ].map((ingredient, i) => (
                 <SmoothReveal key={i} direction="up" delay={i * 0.15}>
                   <div className="group">
-                    <div className="relative h-80 rounded-2xl overflow-hidden mb-6">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6">
                       <Image
                         src={ingredient.image}
                         alt={ingredient.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E2F]/70 to-transparent" />

@@ -35,8 +35,8 @@ export const metadata = {
   },
 };
 
-// Revalider la page toutes les 10 minutes
-export const revalidate = 600;
+// Forcer le rendu dynamique (SSR) pour que les modifications Shopify soient visibles immédiatement
+export const dynamic = 'force-dynamic';
 
 export default async function NotreHistoirePage() {
   // Récupérer le contenu depuis Shopify

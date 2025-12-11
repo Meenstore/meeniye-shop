@@ -57,7 +57,7 @@ export default function ImageParallaxZoom({
           src={src}
           alt={alt}
           fill
-          className="object-cover"
+          className="object-cover object-center"
           sizes="100vw"
           priority
         />
