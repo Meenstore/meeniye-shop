@@ -11,6 +11,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
 export const metadata = {
   title: 'Notre Histoire - Meeniyé | Cosmétiques Capillaires Naturels',
   description: 'Découvrez l\'histoire d\'Anolia, fondatrice de Meeniyé, et l\'origine du nom de notre marque inspiré des traditions afro-caribéennes et du peuple marron Boni.',
+  alternates: {
+    canonical: '/notre-histoire',
+  },
   openGraph: {
     title: 'Notre Histoire - Meeniyé',
     description: 'Une marque née de la passion pour la beauté naturelle et ancrée dans les traditions afro-caribéennes',

@@ -40,6 +40,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `${product.name} | Meeniyé - Cosmétiques Capillaires Naturels`,
     description: product.description || `Découvrez ${product.name}, soin capillaire naturel pour cheveux crépus, frisés et bouclés. Formule issue de la pharmacopée afro-caribéenne.`,
+    alternates: {
+      canonical: `/products/${product.handle}`,
+    },
     openGraph: {
       title: `${product.name} - Meeniyé`,
       description: product.description,

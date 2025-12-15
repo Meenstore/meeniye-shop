@@ -11,6 +11,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
 export const metadata = {
   title: 'Tous nos Produits Capillaires Naturels - Meeniyé',
   description: 'Découvrez notre gamme complète de produits capillaires naturels pour cheveux crépus, frisés et bouclés. Shampoings, masques, crèmes, gels et sérums issus de la pharmacopée afro-caribéenne.',
+  alternates: {
+    canonical: '/products',
+  },
   openGraph: {
     title: 'Tous nos Produits - Meeniyé',
     description: 'Gamme complète de soins capillaires naturels pour cheveux texturés',

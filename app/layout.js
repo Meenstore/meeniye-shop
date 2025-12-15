@@ -16,6 +16,10 @@ export const metadata = {
   description: "Découvrez notre gamme de 12 produits capillaires naturels pour cheveux crépus, frisés et bouclés. Formules issues de la pharmacopée afro-caribéenne. Livraison France, DOM-TOM, Suisse.",
   // Force le mode clair même si l'appareil est en mode sombre
   colorScheme: 'light',
+  metadataBase: new URL('https://meeniye.com'),
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({ children }) {

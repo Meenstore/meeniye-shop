@@ -4,6 +4,13 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Redirection du sous-domaine Netlify vers le domaine principal
+[[redirects]]
+  from = "https://meenstore.netlify.app/*"
+  to = "https://meeniye.com/:splat"
+  status = 301
+  force = true
+
 # Headers for security
 [[headers]]
   for = "/*"
