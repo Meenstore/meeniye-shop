@@ -1,4 +1,3 @@
-import HeroCarousel from './components/HeroCarousel';
 import SmoothReveal from './components/SmoothReveal';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
@@ -12,9 +11,9 @@ import Image from 'next/image';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
 
 export const metadata = {
-  title: 'Meeniyé - Cosmétiques Capillaires Naturels - Cheveux Crépus, Frisés & Bouclés',
-  description: 'Découvrez Meeniyé : soins capillaires professionnels issus de la pharmacopée afro-caribéenne pour cheveux crépus, frisés et bouclés. Livraison France, DOM-TOM, Suisse.',
-  keywords: 'cosmétiques capillaires naturels, cheveux crépus, cheveux frisés, cheveux bouclés, pharmacopée afro-caribéenne, soins capillaires naturels, produits cheveux afro',
+  title: 'Meeniyé - Cosmétiques Capillaires Naturels - Cheveux Crépus & Frisés',
+  description: 'Découvrez Meeniyé : soins capillaires professionnels issus de la pharmacopée afro-caribéenne pour cheveux crépus et frisés. Livraison France, DOM-TOM, Suisse.',
+  keywords: 'cosmétiques capillaires naturels, cheveux crépus, cheveux frisés, pharmacopée afro-caribéenne, soins capillaires naturels, produits cheveux afro',
   authors: [{ name: 'Meeniyé' }],
   openGraph: {
     title: 'Meeniyé - Cosmétiques Capillaires Naturels',

@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
 
     return {
       title: `${collection.title} - Meeniyé | Cosmétiques Capillaires Naturels`,
-      description: collection.description || `Découvrez notre collection ${collection.title.toLowerCase()} : soins capillaires naturels pour cheveux crépus, frisés et bouclés.`,
+      description: collection.description || `Découvrez notre collection ${collection.title.toLowerCase()} : soins capillaires naturels pour cheveux crépus et frisés.`,
       alternates: {
         canonical: `/collections/${handle}`,
       },
@@ -139,6 +139,7 @@ export default async function CollectionPage({ params }) {
                   <Link href={`/products/${product.handle}`} className="block group">
                     <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
                       <ImageParallaxZoom
+                        key={product.id}
                         src={product.image}
                         alt={product.name}
                         height="100%"

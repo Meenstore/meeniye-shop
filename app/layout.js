@@ -12,8 +12,8 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Cosmétiques Capillaires Naturels - Cheveux Crépus, Frisés & Bouclés",
-  description: "Découvrez notre gamme de 12 produits capillaires naturels pour cheveux crépus, frisés et bouclés. Formules issues de la pharmacopée afro-caribéenne. Livraison France, DOM-TOM, Suisse.",
+  title: "Cosmétiques Capillaires Naturels - Cheveux Crépus & Frisés",
+  description: "Découvrez notre gamme de 12 produits capillaires naturels pour cheveux crépus et frisés. Formules issues de la pharmacopée afro-caribéenne. Livraison France, DOM-TOM, Suisse.",
   // Force le mode clair même si l'appareil est en mode sombre
   colorScheme: 'light',
   metadataBase: new URL('https://meeniye.com'),

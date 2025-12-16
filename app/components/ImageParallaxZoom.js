@@ -52,14 +52,13 @@ export default function ImageParallaxZoom({
       className={`relative overflow-hidden ${className}`}
       style={{ height }}
     >
-      <div ref={imageRef} className="w-full h-full">
+      <div ref={imageRef} className="w-full h-full relative">
         <Image
           src={src}
           alt={alt}
           fill
           className="object-cover object-center"
           sizes="100vw"
-          priority
         />
       </div>
     </div>
