@@ -90,13 +90,17 @@ export default async function HomePage() {
 
         {/* Hero Section avec image statique */}
         <section className="relative min-h-[80vh] overflow-hidden mt-28">
-          {/* Image hero avec effet parallax zoom */}
-          <ImageParallaxZoom
-            src={heroImage.src}
-            alt={heroImage.alt}
-            height="85vh"
-            zoomIntensity={1.15}
-          />
+          {/* Image hero statique */}
+          <div className="relative w-full h-[85vh]">
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </div>
 
           {/* Carrousel commenté - pour réactiver, décommenter heroImages et HeroCarousel
           <HeroCarousel
