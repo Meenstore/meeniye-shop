@@ -90,17 +90,14 @@ export default async function HomePage() {
 
         {/* Hero Section avec image statique */}
         <section className="relative min-h-[80vh] overflow-hidden mt-28">
-          {/* Image hero statique */}
-          <div className="relative w-full h-[85vh]">
-            <Image
-              src={heroImage.src}
-              alt={heroImage.alt}
-              fill
-              priority
-              className="object-cover object-center"
-              sizes="100vw"
-            />
-          </div>
+          {/* Image hero avec effet parallax zoom */}
+          <ImageParallaxZoom
+            key={heroImage.src}
+            src={heroImage.src}
+            alt={heroImage.alt}
+            height="85vh"
+            zoomIntensity={1.15}
+          />
 
           {/* Carrousel commenté - pour réactiver, décommenter heroImages et HeroCarousel
           <HeroCarousel
@@ -172,16 +169,15 @@ export default async function HomePage() {
                   alt: 'Produits capillaires Meeniyé'
                 }
               ].map((photo, i) => (
-                <SmoothReveal key={i} direction="up" delay={i * 0.1}>
-                  <div className="relative h-96 rounded-2xl overflow-hidden group">
-                    <Image
-                      src={photo.src}
-                      alt={photo.alt}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
+                <SmoothReveal key={photo.src} direction="up" delay={i * 0.1}>
+                  <ImageParallaxZoom
+                    key={photo.src}
+                    src={photo.src}
+                    alt={photo.alt}
+                    height="384px"
+                    zoomIntensity={1.05}
+                    className="rounded-2xl"
+                  />
                 </SmoothReveal>
               ))}
             </div>
@@ -222,10 +218,12 @@ export default async function HomePage() {
                       <Link href={`/products/${product.handle}`}>
                         <div className="w-80 group cursor-pointer">
                           <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
-                            <img
+                            <ImageParallaxZoom
+                              key={product.id}
                               src={product.image}
                               alt={product.name}
-                              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                              height="100%"
+                              zoomIntensity={1.05}
                             />
                             <div className="absolute top-4 right-4">
                               <span className="px-3 py-1.5 text-xs font-bold tracking-wide uppercase rounded bg-[#582900] text-[#FFFFFF]">
@@ -314,16 +312,16 @@ export default async function HomePage() {
                     link: '/collections/serums-traitants'
                   }
                 ].map((category, i) => (
-                  <SmoothReveal key={i} direction="up" delay={i * 0.1}>
+                  <SmoothReveal key={category.name} direction="up" delay={i * 0.1}>
                     <Link href={category.link}>
                       <div className="w-72 group cursor-pointer">
                         <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
-                          <Image
+                          <ImageParallaxZoom
+                            key={category.image}
                             src={category.image}
                             alt={category.name}
-                            fill
-                            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                            sizes="288px"
+                            height="100%"
+                            zoomIntensity={1.05}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E2F]/60 to-transparent" />
                           <div className="absolute bottom-6 left-6 right-6">
@@ -372,15 +370,15 @@ export default async function HomePage() {
                   color: '#582900'
                 }
               ].map((ingredient, i) => (
-                <SmoothReveal key={i} direction="up" delay={i * 0.15}>
+                <SmoothReveal key={ingredient.name} direction="up" delay={i * 0.15}>
                   <div className="group">
                     <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6">
-                      <Image
+                      <ImageParallaxZoom
+                        key={ingredient.image}
                         src={ingredient.image}
                         alt={ingredient.name}
-                        fill
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        height="100%"
+                        zoomIntensity={1.05}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#2C3E2F]/70 to-transparent" />
                     </div>
