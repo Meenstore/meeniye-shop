@@ -48,7 +48,7 @@ export default async function NotreHistoirePage() {
   // Contenu par défaut si la page Shopify n'existe pas encore
   const defaultContent = `
     <p><strong style="font-size: 1.5rem; color: #077532; display: block; margin-bottom: 0.5rem;">Anolia, fondatrice de Meeniyé.</strong>
-    Originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux, la fondatrice puise dans ses racines une inspiration profonde, nourrie notamment par la richesse de la pharmacopée afro-caraïbéenne, qui met en lumière des plantes, huiles et ingrédients naturels utilisés depuis des générations pour sublimer et protéger la beauté naturelle. Ce lien avec ces traditions ancestrales est au cœur de sa vision et guide la création de produits authentiques et respectueux de l'environnement.</p>
+    Originaire de Guyane, terre riche en traditions, en diversité culturelle et en savoirs ancestraux, la fondatrice puise dans ses racines une inspiration profonde, nourrie notamment par la richesse de la pharmacopée afro-caribéenne, qui met en lumière des plantes, huiles et ingrédients naturels utilisés depuis des générations pour sublimer et protéger la beauté naturelle. Ce lien avec ces traditions ancestrales est au cœur de sa vision et guide la création de produits authentiques et respectueux de l'environnement.</p>
 
     <p>Diplômée d'un master en économie, spécialisé en développement durable, elle débute sa carrière dans le secteur associatif en tant que copilote de projets de développement. Elle rejoint ensuite le secteur public, où elle exerce la fonction de chargée des dispositifs d'aides européennes, avant de se réorienter vers une nouvelle filière plus en accord avec ses aspirations personnelles.</p>
 

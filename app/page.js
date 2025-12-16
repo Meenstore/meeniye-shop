@@ -127,7 +127,7 @@ export default async function HomePage() {
               <div className="space-y-6 text-lg md:text-xl leading-relaxed text-[#2C3E2F]/90">
                 <p>
                   Révélez la beauté de vos cheveux crépus grâce à une expertise alliant tradition et recherche.
-                  Nos formules puisent dans les trésors de la pharmacopée afro-caraïbéenne pour offrir des soins
+                  Nos formules puisent dans les trésors de la pharmacopée afro-caribéenne pour offrir des soins
                   professionnels d'exception, performants et respectueux de la fibre capillaire. Chaque produit a
                   été conçu pour hydrater, nourrir, protéger et magnifier vos cheveux tout en apportant douceur et
                   vitalité à votre cuir chevelu.
