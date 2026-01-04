@@ -5,7 +5,7 @@ import ScrollProgress from '@/app/components/ScrollProgress';
 import Navbar from '@/app/components/Navbar';
 import AddToCartButton from '@/app/components/AddToCartButton';
 import Link from 'next/link';
-import { Truck, RotateCcw, Lock, ArrowLeft } from 'lucide-react';
+import { Lock, ArrowLeft } from 'lucide-react';
 import DOMPurify from 'isomorphic-dompurify';
 
 // Mapper les catégories Shopify (en anglais) vers les noms français
@@ -98,6 +98,9 @@ export default async function ProductPage({ params }) {
 
   // Sélectionner le premier variant disponible par défaut
   const defaultVariant = product.variants.find(v => v.availableForSale) || product.variants[0];
+
+  // Vérifier si au moins un variant est disponible à la vente
+  const isAvailable = product.variants.some(v => v.availableForSale);
 
   return (
     <>
@@ -223,15 +226,7 @@ export default async function ProductPage({ params }) {
                     variant="default"
                   />
 
-                  <div className="grid grid-cols-3 gap-4 text-center">
-                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/30 transition-colors">
-                      <Truck className="w-8 h-8 mx-auto mb-2 text-[#582900]" />
-                      <div className="text-xs text-[#2C3E2F]/70">Livraison gratuite</div>
-                    </div>
-                    <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/30 transition-colors">
-                      <RotateCcw className="w-8 h-8 mx-auto mb-2 text-[#077532]" />
-                      <div className="text-xs text-[#2C3E2F]/70">Retour 30 jours</div>
-                    </div>
+                  <div className="flex justify-center">
                     <div className="p-4 rounded-lg bg-[#F8F9FA] border border-[#2C3E2F]/5 hover:border-[#077532]/30 transition-colors">
                       <Lock className="w-8 h-8 mx-auto mb-2 text-[#582900]" />
                       <div className="text-xs text-[#2C3E2F]/70">Paiement sécurisé</div>
@@ -251,20 +246,10 @@ export default async function ProductPage({ params }) {
                     </div>
                     <div className="flex justify-between py-2 border-b border-[#2C3E2F]/5">
                       <span className="text-[#2C3E2F]/70">Disponibilité</span>
-                      <span className="font-medium text-green-500">En stock</span>
+                      <span className={`font-medium ${isAvailable ? 'text-green-500' : 'text-red-500'}`}>
+                        {isAvailable ? 'En stock' : 'Rupture de stock'}
+                      </span>
                     </div>
-                    {product.tags.length > 0 && (
-                      <div className="flex justify-between py-2 border-b border-[#2C3E2F]/5">
-                        <span className="text-[#2C3E2F]/70">Tags</span>
-                        <div className="flex flex-wrap gap-2 justify-end">
-                          {product.tags.map((tag, i) => (
-                            <span key={i} className="px-2 py-1 text-xs rounded bg-white/5">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               </SmoothReveal>
