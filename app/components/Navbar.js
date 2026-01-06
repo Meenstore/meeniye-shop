@@ -35,11 +35,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  // Calculer l'offset du top en fonction de la présence du bandeau d'ouverture
+  const [topOffset, setTopOffset] = useState('top-8');
+
+  useEffect(() => {
+    const checkLaunchBanner = () => {
+      const launchDate = new Date('2026-01-19T00:00:00');
+      const now = new Date();
+      const showLaunchBanner = now < launchDate;
+
+      // Si le bandeau d'ouverture est visible, ajouter son espacement (environ 36px) + bandeau livraison (32px) = 68px
+      setTopOffset(showLaunchBanner ? 'top-[68px]' : 'top-8');
+    };
+
+    checkLaunchBanner();
+  }, []);
+
   return (
     <>
       <nav className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
         isVisible
-          ? 'top-8 bg-white/95 backdrop-blur-xl border-b border-[#582900]/10 shadow-lg'
+          ? `${topOffset} bg-white/95 backdrop-blur-xl border-b border-[#582900]/10 shadow-lg`
           : '-top-32 bg-transparent border-b border-transparent'
       }`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 mt-2">
