@@ -39,8 +39,8 @@ export const metadata = {
   },
 };
 
-// Revalider la page toutes les 5 minutes (aligné avec getProducts)
-export const revalidate = 300;
+// Filet de sécurité : revalider toutes les 1h si un webhook Shopify est raté
+export const revalidate = 3600;
 
 export default async function HomePage() {
   // Récupérer les produits depuis Shopify

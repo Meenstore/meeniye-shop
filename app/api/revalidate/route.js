@@ -88,9 +88,11 @@ export async function POST(request) {
 
     // 4. On-Demand Revalidation basée sur le topic
     if (topic.startsWith('products/')) {
-      // Toujours revalider la page d'accueil (liste des produits)
+      // Toujours revalider la page d'accueil et le catalogue produits
       revalidatePath('/', 'page');
       revalidatedPaths.push('/');
+      revalidatePath('/products', 'page');
+      revalidatedPaths.push('/products');
 
       // Si c'est une mise à jour/création, revalider la page produit spécifique
       if ((topic === 'products/update' || topic === 'products/create') && data.handle) {

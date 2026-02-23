@@ -38,8 +38,8 @@ export const metadata = {
   },
 };
 
-// Revalider la page toutes les 10 minutes
-export const revalidate = 600;
+// Filet de sécurité : revalider toutes les 1h si un webhook Shopify est raté
+export const revalidate = 3600;
 
 export default async function NotreHistoirePage() {
   // Récupérer le contenu depuis Shopify

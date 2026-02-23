@@ -4,6 +4,9 @@
 [build.environment]
   NODE_VERSION = "20"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 # Redirection du sous-domaine Netlify vers le domaine principal
 [[redirects]]
   from = "https://meenstore.netlify.app/*"

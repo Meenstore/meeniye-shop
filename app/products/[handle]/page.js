@@ -85,8 +85,8 @@ export async function generateStaticParams() {
 // Si un produit n'était pas dans generateStaticParams, il sera rendu à la demande (SSR)
 export const dynamicParams = true;
 
-// Revalider les pages statiques toutes les 10 minutes pour économiser les crédits Netlify
-export const revalidate = 600; // 10 minutes
+// Filet de sécurité : revalider toutes les 1h si un webhook Shopify est raté
+export const revalidate = 3600;
 
 export default async function ProductPage({ params }) {
   const { handle } = await params;
