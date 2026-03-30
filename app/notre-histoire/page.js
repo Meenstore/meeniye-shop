@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 import { getPage } from '@/lib/shopify';
-import DOMPurify from 'isomorphic-dompurify';
+import sanitizeHtml from 'sanitize-html';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://meeniye.com';
 
@@ -112,9 +112,9 @@ export default async function NotreHistoirePage() {
                 <div
                   className="prose prose-lg max-w-none [&>p]:mb-6 [&>h3]:mt-12 [&>h3]:mb-6 [&>h3]:text-3xl [&>h3]:font-bold"
                   dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(content, {
-                      ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'b', 'i', 'u', 'ul', 'ol', 'li', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'code', 'span', 'div'],
-                      ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'style']
+                    __html: sanitizeHtml(content, {
+                      allowedTags: ['p', 'br', 'strong', 'em', 'b', 'i', 'u', 'ul', 'ol', 'li', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'code', 'span', 'div'],
+                      allowedAttributes: { '*': ['href', 'target', 'rel', 'class', 'style'] }
                     })
                   }}
                 />
