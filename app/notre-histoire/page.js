@@ -38,8 +38,8 @@ export const metadata = {
   },
 };
 
-// Filet de sécurité : revalider toutes les 1h si un webhook Shopify est raté
-export const revalidate = 3600;
+// Rendu dynamique : chaque visite fetch le contenu frais depuis Shopify
+export const dynamic = 'force-dynamic';
 
 export default async function NotreHistoirePage() {
   // Récupérer le contenu depuis Shopify
